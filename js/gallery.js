@@ -22,6 +22,7 @@ const distance = 110; //액자 사이 거리
 
 let totalNum;
 <<<<<<< HEAD
+<<<<<<< HEAD
 let scene, camera, renderer, controls;
 let galleryGroup = new THREE.Group();
 let galleryGroup2 = new THREE.Group();
@@ -64,18 +65,11 @@ const workArr = [
 const init = () => {
 =======
 let scene, camera, renderer, controls
+=======
+let scene, camera, renderer, controls;
+>>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
 let galleryGroup = new THREE.Group();
 let galleryGroup2 = new THREE.Group();
-
-let targetNum = 0;
-let moveX = 0;
-const movecontrols = {
-    moveForward: false,
-    moveBackward: false,
-    moveLeft: false,
-    moveRight: false
-}
-let keys=[];
 
 const workArr = [
     {
@@ -114,6 +108,7 @@ const workArr = [
 
 const init = () => {
     
+<<<<<<< HEAD
     if(keys['w']){
         controls.moveForward(.1);
     }else if(keys['s']){
@@ -124,6 +119,8 @@ const init = () => {
         controls.moveRight(-.1);
     }
 >>>>>>> ef1839f... first commit
+=======
+>>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
     totalNum = workArr.length - 1; //전체 박스 갯수
 
     scene = new THREE.Scene();
@@ -193,15 +190,9 @@ const init = () => {
     scene.add( helper2 );
 
 
-    // controls = new OrbitControls(camera, renderer.domElement);
-    controls = new PointerLockControls(camera,renderer.domElement);
-        
-    
-    // controls = new TrackballControls(camera, renderer.domElement);
-    // controls.zoomSpeed=5;
-    // controls.maxDistance=WIDTH;
+    controls = new OrbitControls(camera, renderer.domElement);
+    controls.keyPanSpeed=15;
 
-    // let wallWidth
     {
         //가벽 만들기
         const imageMap = new THREE.TextureLoader().load("../image/hardwood.jpg");
@@ -235,12 +226,16 @@ const init = () => {
         const geometry2 = new THREE.BoxGeometry(2, 100, wallWidth);
         const wallMesh2 = new THREE.Mesh(geometry2, material);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         wallMesh2.position.set(-wallWidth / 2, 0, 0);
 =======
         // wallMesh2.rotateX(90)
         // wallMesh2.rotateY(90)
         // wallMesh2.rotateZ(10)
+=======
+    
+>>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
         wallMesh2.position.set(-wallWidth/2, 0, 0);
 >>>>>>> ef1839f... first commit
         //액자 시작 x축 원점(제어유용), 두께가 2니까 뒤로 좀 빼줌
@@ -268,6 +263,7 @@ const init = () => {
     // floor.receiveShadow=true;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     //텍스트 로딩
     const fontLoader = new FontLoader();
     fontLoader.load("../font/Do Hyeon_Regular.json", (font) => {
@@ -294,6 +290,8 @@ const init = () => {
     // door.rotateY(45)
     // door.position.set(100,0,100)
 
+=======
+>>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
     //텍스트 로딩
     const fontLoader = new FontLoader();
     fontLoader.load('../font/Do Hyeon_Regular.json', (font) => {
@@ -367,6 +365,7 @@ const addBox = (i) => {
     galleryGroup2.add(boxMesh2);
 
     //조명 넣기
+<<<<<<< HEAD
 
 <<<<<<< HEAD
     const spotLight = new THREE.SpotLight(0xffffff, 1);
@@ -375,6 +374,8 @@ const addBox = (i) => {
     // const light = new THREE.PointLight( 0xffffff, 1, 50 );
     // light.position.set( -50, 34, 0 );
     // scene.add( light );
+=======
+>>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
  
     const spotLight = new THREE.SpotLight(0xffffff, 1);
     spotLight.position.set(x, 34, 12-wallWidth/2+20);
@@ -408,6 +409,7 @@ const addBox = (i) => {
 
     // const spotLightHelper2 = new THREE.SpotLightHelper(spotLight2);
     // scene.add(spotLightHelper2);
+<<<<<<< HEAD
 <<<<<<< HEAD
 };
 =======
@@ -460,6 +462,9 @@ const addBox = (i) => {
 //     console.log(pageNum)
 // };
 >>>>>>> ef1839f... first commit
+=======
+};
+>>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
 
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
@@ -540,6 +545,7 @@ const onDocumentMouseDown = (event) => {
     }
 };
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 // const onKeyDown = (event) => {
 
@@ -597,6 +603,8 @@ const keyup=(e)=>{
     keys[e.key]=false;
 }
 >>>>>>> ef1839f... first commit
+=======
+>>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
 
 const stageResize = () => {
     WIDTH = window.innerWidth;
@@ -604,13 +612,18 @@ const stageResize = () => {
 
     camera.updateProjectionMatrix();
 <<<<<<< HEAD
+<<<<<<< HEAD
     renderer.setPixelRatio(window.devicePixelRatio);
 =======
 >>>>>>> ef1839f... first commit
+=======
+    renderer.setPixelRatio(window.devicePixelRatio);
+>>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
     renderer.setSize(WIDTH, HEIGHT);
     camera.aspect = WIDTH / HEIGHT;
 };
 const animate = () => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     // camera.lookAt(scene.position);
 =======
@@ -620,11 +633,15 @@ const animate = () => {
     
     camera.lookAt(scene.position);
 >>>>>>> ef1839f... first commit
+=======
+    // camera.lookAt(scene.position);
+>>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
     camera.updateProjectionMatrix();
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
 };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 init();
 animate();
@@ -645,13 +662,14 @@ const update = (time)=>{
 }
 
 
+=======
+>>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
 init();
 animate();
 window.addEventListener("resize", stageResize);
-// document.addEventListener("click", clickFunc);
-// document.addEventListener("mousewheel", scrollFunc); //마우스 휠
 window.addEventListener("pointermove", onPointerMove);
 window.addEventListener("mousedown", onDocumentMouseDown);
+<<<<<<< HEAD
 renderer.domElement.addEventListener('keydown', keydown);
 renderer.domElement.addEventListener('keyup', keyup);
 // document.addEventListener('keydown', onKeyDown);
@@ -663,3 +681,5 @@ renderer.domElement.addEventListener('keyup', keyup);
 //     console.log('lock');
 // });
 >>>>>>> ef1839f... first commit
+=======
+>>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
