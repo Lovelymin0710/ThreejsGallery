@@ -1,10 +1,18 @@
 import * as THREE from "https://unpkg.com/three@0.108.0/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.108.0/examples/jsm/controls/OrbitControls.js";
+<<<<<<< HEAD
 import { neonCursor } from "https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js";
 
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
 let scene, camera, renderer, circle, skelet, particle;
+=======
+import { particlesCursor } from "https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js";
+
+let WIDTH = window.innerWidth;
+let HEIGHT = window.innerHeight;
+let scene, camera, renderer, controls;
+>>>>>>> ef1839f... first commit
 let boxGroup = new THREE.Object3D();
 
 let totalNum = 100; //전체 박스 갯수
@@ -27,6 +35,7 @@ const dataArr = [
     },
     {
         image: "https://source.unsplash.com/collection/2",
+<<<<<<< HEAD
         link: "http://google.com",
     },
     {
@@ -36,6 +45,17 @@ const dataArr = [
     {
         image: "https://source.unsplash.com/collection/4",
         link: "http://google.com",
+=======
+        // link: "./test.html",
+    },
+    {
+        image: "https://source.unsplash.com/collection/3",
+        // link: "./test.html",
+    },
+    {
+        image: "https://source.unsplash.com/collection/4",
+        // link: "./test.html",
+>>>>>>> ef1839f... first commit
     },
     {
         image: "https://source.unsplash.com/collection/5",
@@ -65,6 +85,7 @@ const dataArr = [
         image: "https://source.unsplash.com/collection/11",
         // link: "./test.html",
     },
+<<<<<<< HEAD
     {
         image: "https://source.unsplash.com/collection/15",
         // link: "./test.html",
@@ -81,6 +102,8 @@ const dataArr = [
         image: "https://source.unsplash.com/collection/14",
         // link: "./test.html",
     },
+=======
+>>>>>>> ef1839f... first commit
 ];
 
 const init = () => {
@@ -102,6 +125,7 @@ const init = () => {
     document.body.style.height = `${HEIGHT + totalNum * 100}px`;
     //body 스크롤 만들기
 
+<<<<<<< HEAD
     circle = new THREE.Object3D();
     skelet = new THREE.Object3D();
     particle = new THREE.Object3D();
@@ -145,6 +169,10 @@ const init = () => {
 
     //안개
     const near = 50;
+=======
+    //안개
+    const near = 100;
+>>>>>>> ef1839f... first commit
     const far = 300;
     const color = "#000000";
     scene.fog = new THREE.Fog(color, near, far);
@@ -155,6 +183,14 @@ const init = () => {
     // const gridHelper = new THREE.GridHelper(240, 20);
     // scene.add(gridHelper);
 
+<<<<<<< HEAD
+=======
+    //조명 넣기
+    var light = new THREE.HemisphereLight(0xffffff, 0x080820, 0.8);
+    light.position.set(100, 100, 0);
+    scene.add(light);
+
+>>>>>>> ef1839f... first commit
     // controls = new OrbitControls(camera, renderer.domElement);
     {
     }
@@ -162,18 +198,31 @@ const init = () => {
         addBox(i);
     }
     scene.add(boxGroup);
+<<<<<<< HEAD
+=======
+    addLight(15, 15, 20);
+>>>>>>> ef1839f... first commit
 };
 
 //박스 추가
 const addBox = (i) => {
     const imageMap = new THREE.TextureLoader().load(dataArr[i].image);
+<<<<<<< HEAD
     imageMap.wrapS = THREE.RepeatWrapping;
     imageMap.wrapT = THREE.RepeatWrapping;
+=======
+    // imageMap.wrapS = THREE.RepeatWrapping;
+    // imageMap.wrapT = THREE.RepeatWrapping;
+>>>>>>> ef1839f... first commit
     // imageMap.repeat.set(1, 4);
 
     const material = new THREE.SpriteMaterial({ map: imageMap });
     const boxMesh = new THREE.Sprite(material);
+<<<<<<< HEAD
     boxMesh.scale.set(32, 18, 3);
+=======
+    boxMesh.scale.set(32, 18, 1);
+>>>>>>> ef1839f... first commit
 
     let x = Math.random() * 100 - 100 / 2;
     let y = Math.random() * 50 - 50 / 2;
@@ -185,6 +234,24 @@ const addBox = (i) => {
     boxGroup.add(boxMesh);
 };
 
+<<<<<<< HEAD
+=======
+//조명 넣기
+const addLight = (...pos) => {
+    const color = 0xffffff;
+    const intensity = 0.4;
+    const light = new THREE.PointLight(color, intensity);
+    light.castShadow = true;
+
+    light.position.set(...pos);
+
+    // const helper = new THREE.PointLightHelper(light);
+    // scene.add(helper);
+
+    scene.add(light);
+};
+
+>>>>>>> ef1839f... first commit
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
 
@@ -239,12 +306,15 @@ const animate = () => {
     boxGroup.position.x = -(moveX / 50);
     boxGroup.position.y = moveY / 50;
 
+<<<<<<< HEAD
     particle.rotation.x += 0.004;
     particle.rotation.y += 0.004;
     particle.rotation.z += 0.004;
 
     renderer.clear();
 
+=======
+>>>>>>> ef1839f... first commit
     camera.lookAt(scene.position);
     camera.updateProjectionMatrix();
     renderer.render(scene, camera);
