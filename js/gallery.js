@@ -15,19 +15,9 @@ let wallWidth;
 const distance = 110; //액자 사이 거리
 
 let totalNum;
-let scene, camera, renderer, controls
+let scene, camera, renderer, controls;
 let galleryGroup = new THREE.Group();
 let galleryGroup2 = new THREE.Group();
-
-let targetNum = 0;
-let moveX = 0;
-const movecontrols = {
-    moveForward: false,
-    moveBackward: false,
-    moveLeft: false,
-    moveRight: false
-}
-let keys=[];
 
 const workArr = [
     {
@@ -66,15 +56,6 @@ const workArr = [
 
 const init = () => {
     
-    if(keys['w']){
-        controls.moveForward(.1);
-    }else if(keys['s']){
-        controls.moveForward(-.1);
-    }else if(keys['a']){
-        controls.moveRight(-.1);
-    }else if(keys['d']){
-        controls.moveRight(-.1);
-    }
     totalNum = workArr.length - 1; //전체 박스 갯수
 
     scene = new THREE.Scene();
@@ -113,15 +94,9 @@ const init = () => {
     scene.add( helper2 );
 
 
-    // controls = new OrbitControls(camera, renderer.domElement);
-    controls = new PointerLockControls(camera,renderer.domElement);
-        
-    
-    // controls = new TrackballControls(camera, renderer.domElement);
-    // controls.zoomSpeed=5;
-    // controls.maxDistance=WIDTH;
+    controls = new OrbitControls(camera, renderer.domElement);
+    controls.keyPanSpeed=15;
 
-    // let wallWidth
     {
         //가벽 만들기
         const imageMap = new THREE.TextureLoader().load("../image/hardwood.jpg");
@@ -146,9 +121,7 @@ const init = () => {
 
         const geometry2 = new THREE.BoxGeometry(2, 100, wallWidth);
         const wallMesh2 = new THREE.Mesh(geometry2, material);
-        // wallMesh2.rotateX(90)
-        // wallMesh2.rotateY(90)
-        // wallMesh2.rotateZ(10)
+    
         wallMesh2.position.set(-wallWidth/2, 0, 0);
         //액자 시작 x축 원점(제어유용), 두께가 2니까 뒤로 좀 빼줌
         wallMesh2.receiveShadow = true; //그림자 표시
@@ -168,15 +141,6 @@ const init = () => {
     scene.add(floor);
     floor.position.set(0, -50, 0);
     // floor.receiveShadow=true;
-
-    //문 그리기
-    // const door = new THREE.Mesh(
-    //     new THREE.BoxGeometry(60, 100, 2), 
-    //     new THREE.MeshPhongMaterial({color: 0x000000})
-    // );
-    // scene.add(door);
-    // door.rotateY(45)
-    // door.position.set(100,0,100)
 
     //텍스트 로딩
     const fontLoader = new FontLoader();
@@ -229,10 +193,6 @@ const addBox = (i) => {
     galleryGroup2.add(boxMesh2);
 
     //조명 넣기
-
-    // const light = new THREE.PointLight( 0xffffff, 1, 50 );
-    // light.position.set( -50, 34, 0 );
-    // scene.add( light );
  
     const spotLight = new THREE.SpotLight(0xffffff, 1);
     spotLight.position.set(x, 34, 12-wallWidth/2+20);
@@ -261,54 +221,7 @@ const addBox = (i) => {
 
     // const spotLightHelper2 = new THREE.SpotLightHelper(spotLight2);
     // scene.add(spotLightHelper2);
-    // https://threejs.org/examples/#webgl_lights_spotlight
-
 };
-// function initTrackballControls(camera, renderer) {
-//     var trackballControls = new TrackballControls(camera, renderer.domElement);
-//     trackballControls.rotateSpeed = 1.0;
-//     trackballControls.zoomSpeed = 1.2;
-//     trackballControls.panSpeed = 0.8;
-//     trackballControls.noZoom = false;
-//     trackballControls.noPan = false;
-//     trackballControls.staticMoving = true;
-//     trackballControls.dynamicDampingFactor = 0.3;
-//     trackballControls.keys = [65, 83, 68];
-
-//     return trackballControls;
-// }
-
-// const clickFunc = (event) => {
-//     // console.log(event.pageX);
-//     if (event.pageX < WIDTH / 2) {
-//         // console.log("좌");
-//         if (pageNum > 0) { //첫번째 페이지에서 전으로 더 넘어가지 못함
-//             pageNum -= 1; 
-//         }
-//     } else {
-//         // console.log("우");
-//         if (pageNum < totalNum - 1) { //마지막페이지에서 더 넘어가지 못함
-//             pageNum += 1;
-//         }
-//     }
-//     // console.log("pageNum :" + pageNum);
-//     targetNum = - (pageNum * distance);
-// };
-
-// const scrollFunc = (event) => {
-//     console.log(event.deltaY); //deltyY : 마우스휠 Y축(상하) 스크롤량 반환
-//     if (event.deltaY == 100) { //액자 사이 거리만큼 움직여야함
-//         if (pageNum > 0) {
-//             pageNum -= 1;
-//         }
-//     } else {
-//         if (pageNum < totalNum) {
-//             pageNum += 1;
-//         }
-//     }
-//     targetNum = -(pageNum * distance);
-//     console.log(pageNum)
-// };
 
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
@@ -366,108 +279,25 @@ const onDocumentMouseDown = (event) => {
         }
     }
 };
-// const onKeyDown = (event) => {
-
-//     switch ( event.code ) {
-
-//         case 'ArrowUp':
-//         case 'KeyW': controls.moveForward = true; break;
-
-//         case 'ArrowDown':
-//         case 'KeyS': controls.moveBackward = true; break;
-
-//         case 'ArrowLeft':
-//         case 'KeyA': controls.moveLeft = true; break;
-
-//         case 'ArrowRight':
-//         case 'KeyD': controls.moveRight = true; break;
-
-//         // case 'KeyC': controls.crouch = true; break;
-//         // case 'Space': controls.jump = true; break;
-//         // case 'ControlLeft':
-//         // case 'ControlRight': controls.attack = true; break;
-
-//     }
-
-// }
-// const onKeyUp = (event) => {
-
-//     switch ( event.code ) {
-
-//         case 'ArrowUp':
-//         case 'KeyW': controls.moveForward = false; break;
-
-//         case 'ArrowDown':
-//         case 'KeyS': controls.moveBackward = false; break;
-
-//         case 'ArrowLeft':
-//         case 'KeyA': controls.moveLeft = false; break;
-
-//         case 'ArrowRight':
-//         case 'KeyD': controls.moveRight = false; break;
-
-//         // case 'KeyC': controls.crouch = false; break;
-//         // case 'Space': controls.jump = false; break;
-//         // case 'ControlLeft':
-//         // case 'ControlRight': controls.attack = false; break;
-
-//     }
-
-// }
-
-const keydown=(e)=>{
-    keys[e.key]=true;
-}
-const keyup=(e)=>{
-    keys[e.key]=false;
-}
 
 const stageResize = () => {
     WIDTH = window.innerWidth;
     HEIGHT = window.innerHeight;
 
     camera.updateProjectionMatrix();
+    renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(WIDTH, HEIGHT);
     camera.aspect = WIDTH / HEIGHT;
 };
 const animate = () => {
-    // controls.update();
-    moveX += (targetNum - moveX) * 0.05;
-    // galleryGroup.position.x = moveX;
-    
-    camera.lookAt(scene.position);
+    // camera.lookAt(scene.position);
     camera.updateProjectionMatrix();
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
 };
 
-const update = (time)=>{
-    const boxTime = time * .0001;
-    const boxPosition = new THREE.Vector3();
-    const boxNextPosition = new THREE.Vector2();
-    
-    this.path.getPointAt(boxTime % 1, boxPosition);
-    this.path.getPointAt((boxTime + 0.01) % 1, boxNextPosition);
-    
-    this.boxMesh.position.set(boxPosition.x, 0, boxPosition.y);
-    this.boxMesh.lookAt(boxNextPosition.x, 0, boxNextPosition.y);
-}
-
-
 init();
 animate();
 window.addEventListener("resize", stageResize);
-// document.addEventListener("click", clickFunc);
-// document.addEventListener("mousewheel", scrollFunc); //마우스 휠
 window.addEventListener("pointermove", onPointerMove);
 window.addEventListener("mousedown", onDocumentMouseDown);
-renderer.domElement.addEventListener('keydown', keydown);
-renderer.domElement.addEventListener('keyup', keyup);
-// document.addEventListener('keydown', onKeyDown);
-// document.addEventListener( 'keyup', onKeyUp );
-// controls.addEventListener('lock',function(){
-//     console.log('lock');
-// });
-// controls.addEventListener('unlock',function(){
-//     console.log('lock');
-// });
