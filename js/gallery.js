@@ -1,6 +1,7 @@
 import * as THREE from "https://unpkg.com/three@0.108.0/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.108.0/examples/jsm/controls/OrbitControls.js";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { TrackballControls } from "https://unpkg.com/three@0.108.0/examples/jsm/controls/TrackballControls.js";
 // import Stats from 'https://unpkg.com/three@0.108.0/examples/jsm/libs/stats.module'
 // import { KeyController } from "./keyController.js";
@@ -12,12 +13,21 @@ import { TextGeometry } from "../geometries/TextGeometry.js";
 import {PointerLockControls} from "https://unpkg.com/three@0.108.0/examples/jsm/controls/PointerLockControls.js";
 =======
 >>>>>>> 9675acd... organize code
+=======
+=======
+import { TrackballControls } from "https://unpkg.com/three@0.108.0/examples/jsm/controls/TrackballControls.js";
+// import Stats from 'https://unpkg.com/three@0.108.0/examples/jsm/libs/stats.module'
+// import { KeyController } from "./keyController.js";
+import {PointerLockControls} from "https://unpkg.com/three@0.108.0/examples/jsm/controls/PointerLockControls.js";
+>>>>>>> d3df155... plusstar
+>>>>>>> a0d28e0... plusstar
 import { FontLoader } from "../loaders/FontLoader.js";
 import { TextGeometry } from '../geometries/TextGeometry.js';
 >>>>>>> ef1839f... first commit
 
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
+<<<<<<< HEAD
 
 // const totalNum = 10; //전체 액자 갯수
 const distance = 130; //액자 사이 거리
@@ -220,6 +230,65 @@ const init = () => {
 >>>>>>> ef1839f... first commit
     renderer.setSize(WIDTH, HEIGHT);
     renderer.setPixelRatio(window.devicePixelRatio);
+=======
+let wallWidth;
+
+// const totalNum = 10; //전체 액자 갯수
+const distance = 110; //액자 사이 거리
+
+let totalNum;
+let scene, camera, renderer, controls;
+let galleryGroup = new THREE.Group();
+let galleryGroup2 = new THREE.Group();
+
+const workArr = [
+    {
+        "image": "https://source.unsplash.com/collection/0",
+        "link": "http://google.com",
+    },
+    {
+        "image": "https://source.unsplash.com/collection/1",
+        "link": "http://google.com",
+    },
+    {
+        "image": "https://source.unsplash.com/collection/2",
+        "link": "http://google.com",
+    },
+    {
+        "image": "https://source.unsplash.com/collection/3",
+        "link": "http://google.com",
+    },
+    {
+        "image": "https://source.unsplash.com/collection/4",
+        "link": "http://google.com",
+    },
+    {
+        "image": "https://source.unsplash.com/collection/5",
+        "link": "http://google.com",
+    },
+    {
+        "image": "https://source.unsplash.com/collection/6",
+        "link": "http://google.com",
+    },
+    {
+        "image": "https://source.unsplash.com/collection/7",
+        "link": "http://google.com",
+    }
+];
+
+const init = () => {
+    
+    totalNum = workArr.length - 1; //전체 박스 갯수
+
+    scene = new THREE.Scene();
+
+    scene.background = new THREE.Color("#99B1F0"); //배경 컬러
+    camera = new THREE.PerspectiveCamera(30, WIDTH / HEIGHT, 0.1, 1000);
+    camera.position.set(220, 50, 220);
+
+    renderer = new THREE.WebGLRenderer({ antialias: true});
+    renderer.setSize(WIDTH, HEIGHT);
+>>>>>>> d3df155... plusstar
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap; //PCFShadowMap
     //그림자 활성화
@@ -233,6 +302,7 @@ const init = () => {
     // const gridHelper = new THREE.GridHelper(240, 20);
     // scene.add(gridHelper);
 
+<<<<<<< HEAD
     //움직이는 배경
     circle = new THREE.Object3D();
     skelet = new THREE.Object3D();
@@ -316,6 +386,25 @@ const init = () => {
     controls = new OrbitControls(camera, renderer.domElement);
     controls.maxDistance=1000;
     controls.keyPanSpeed=20;
+=======
+    //조명 넣기
+    var light = new THREE.HemisphereLight(0xFFFFFF, 0xFFFFFF, 0.45);
+    light.position.set(0, 70, -50);
+    scene.add(light);
+
+    var light2 = new THREE.HemisphereLight(0xFFFFFF, 0xFFFFFF, 0.45);
+    light2.position.set(-50, 70, 0);
+    scene.add(light2);
+
+    const helper = new THREE.HemisphereLightHelper( light, 5 );
+    scene.add( helper );
+    const helper2 = new THREE.HemisphereLightHelper( light2, 5 );
+    scene.add( helper2 );
+
+
+    controls = new OrbitControls(camera, renderer.domElement);
+    controls.keyPanSpeed=15;
+>>>>>>> d3df155... plusstar
 
     {
         //가벽 만들기
@@ -326,6 +415,7 @@ const init = () => {
         imageMap.wrapT = THREE.RepeatWrapping;
         imageMap.repeat.set(10, 4);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
         wallWidth = distance * totalNum + distance;
 <<<<<<< HEAD
@@ -342,6 +432,8 @@ const init = () => {
         });
 =======
 =======
+=======
+>>>>>>> a0d28e0... plusstar
         
 <<<<<<< HEAD
 >>>>>>> b46e643... change gallery works
@@ -361,16 +453,31 @@ const init = () => {
 >>>>>>> ef1839f... first commit
 =======
         wallMesh.position.set(0, 0, -wallWidth2/2);
+<<<<<<< HEAD
 >>>>>>> b46e643... change gallery works
+=======
+=======
+        wallWidth = distance * totalNum + distance;
+        const geometry = new THREE.BoxGeometry(wallWidth, 100, 2); //x,y,z(두께)
+        const material = new THREE.MeshPhongMaterial({
+            // map: imageMap,
+            color: 0xF4FAB1,
+        });
+        const wallMesh = new THREE.Mesh(geometry, material);
+        wallMesh.position.set(0, 0, -wallWidth/2);
+>>>>>>> d3df155... plusstar
+>>>>>>> a0d28e0... plusstar
         //액자 시작 x축 원점(제어유용), 두께가 2니까 뒤로 좀 빼줌
         wallMesh.receiveShadow = true; //그림자 표시
         // wallMesh.castShadow = true; //그림자 발생
         galleryGroup.add(wallMesh);
         scene.add(galleryGroup);
 
+<<<<<<< HEAD
         
         const geometry2 = new THREE.BoxGeometry(2, 150, wallWidth2);
         const wallMesh2 = new THREE.Mesh(geometry2, material);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -385,6 +492,13 @@ const init = () => {
 >>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
 =======
 >>>>>>> 9675acd... organize code
+=======
+=======
+        const geometry2 = new THREE.BoxGeometry(2, 100, wallWidth);
+        const wallMesh2 = new THREE.Mesh(geometry2, material);
+    
+>>>>>>> d3df155... plusstar
+>>>>>>> a0d28e0... plusstar
         wallMesh2.position.set(-wallWidth/2, 0, 0);
 >>>>>>> ef1839f... first commit
         //액자 시작 x축 원점(제어유용), 두께가 2니까 뒤로 좀 빼줌
@@ -394,6 +508,7 @@ const init = () => {
         scene.add(galleryGroup2);
     }
 
+<<<<<<< HEAD
     for (let i = 0; i < stotalNum; i++) {
         addBox(i); //액자 갯수만큼 생성
     }
@@ -421,6 +536,18 @@ const init = () => {
     floor.frustumCulled=false;
     floor.position.set(0, -75, 0);
     scene.add(floor);
+=======
+    for (let i = 0; i < totalNum; i++) {
+        addBox(i); //액자 갯수만큼 생성
+    }
+    //바닥 그리기
+    const floor = new THREE.Mesh(
+        new THREE.BoxGeometry(wallWidth, 0.1, wallWidth), 
+        new THREE.MeshPhongMaterial({color: 0xFFFFFF})
+    );
+    scene.add(floor);
+    floor.position.set(0, -50, 0);
+>>>>>>> d3df155... plusstar
     // floor.receiveShadow=true;
 
 <<<<<<< HEAD
@@ -464,6 +591,7 @@ const init = () => {
                 height:8,
             }
         );
+<<<<<<< HEAD
         const material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
         const font3d = new THREE.Mesh(geometry, material);
         font3d.position.set(-210,-60, 10)
@@ -511,11 +639,25 @@ const init = () => {
         hwfont.receiveShadow=true;
         scene.add(hwfont);
     })
+<<<<<<< HEAD
 >>>>>>> b46e643... change gallery works
+=======
+=======
+        const material = new THREE.MeshBasicMaterial({color: 0xffffff});
+        const font3d = new THREE.Mesh(geometry, material);
+        // font3d.position.set(-wallWidth/4+84,-50, -wallWidth/4)
+        font3d.position.set(-200,-50, 50)
+        // font3d.rotateZ(180)
+        font3d.rotateY(44.7)
+        scene.add(font3d);
+    })
+>>>>>>> d3df155... plusstar
+>>>>>>> a0d28e0... plusstar
 };
 
 //액자 추가
 const addBox = (i) => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     // const imageMap = new THREE.TextureLoader().load(
 <<<<<<< HEAD
@@ -542,6 +684,19 @@ const addBox = (i) => {
     console.log(imageMap);
     const geometry = new THREE.BoxGeometry(40, 50, 2);
 >>>>>>> b46e643... change gallery works
+=======
+    const imageMap = new THREE.TextureLoader().load(sw_work[i].image);
+    console.log(imageMap);
+    const geometry = new THREE.BoxGeometry(40, 50, 2);
+=======
+    // const imageMap = new THREE.TextureLoader().load(
+        // "https://source.unsplash.com/collection/" + i, //이미지 랜덤으로 뿌려줌 
+    // );
+    const imageMap = new THREE.TextureLoader().load(workArr[i].image);
+    console.log(imageMap);
+    const geometry = new THREE.BoxGeometry(40, 28, 1);
+>>>>>>> d3df155... plusstar
+>>>>>>> a0d28e0... plusstar
     const material = new THREE.MeshPhongMaterial({map: imageMap});
     const boxMesh = new THREE.Mesh(geometry, material);
     boxMesh.castShadow = true;
@@ -549,6 +704,7 @@ const addBox = (i) => {
 >>>>>>> ef1839f... first commit
     // let x = (wallWidth/workArr.length)*i
     console.log(x);
+<<<<<<< HEAD
     let y = 8; //Math.random() * 40 - 5;
     let z = 0;
 <<<<<<< HEAD
@@ -612,7 +768,32 @@ const addBox = (i) => {
 =======
     spotLight.position.set(x, 55, 12-wallWidth2/2+20);
     spotLight.angle = Math.PI / 4.5; //조명 범위
+<<<<<<< HEAD
 >>>>>>> b46e643... change gallery works
+=======
+=======
+    let y = 0; //Math.random() * 40 - 5;
+    let z = 0;
+    boxMesh.position.set(x, y, -wallWidth/2+2);
+    boxMesh.name = 'workofArt_${i}';
+    boxMesh.link = workArr[i].link;
+    galleryGroup.add(boxMesh);
+
+    const geometry2 = new THREE.BoxGeometry(1, 28, 40);
+    const boxMesh2 = new THREE.Mesh(geometry2, material);
+    boxMesh2.castShadow = true;
+    boxMesh2.position.set(-wallWidth/2+2, y, x);
+    boxMesh2.name = 'workofArt_${i}';
+    boxMesh2.link = workArr[i].link;
+    galleryGroup2.add(boxMesh2);
+
+    //조명 넣기
+ 
+    const spotLight = new THREE.SpotLight(0xffffff, 1);
+    spotLight.position.set(x, 34, 12-wallWidth/2+20);
+    spotLight.angle = Math.PI / 5; //조명 범위
+>>>>>>> d3df155... plusstar
+>>>>>>> a0d28e0... plusstar
     spotLight.penumbra = 0.1; //조명 경계 정도
     spotLight.decay = 1.2; //조명 투명도
     spotLight.distance = 70;
@@ -623,6 +804,7 @@ const addBox = (i) => {
 
     // const spotLightHelper = new THREE.SpotLightHelper(spotLight);
     // scene.add(spotLightHelper);
+<<<<<<< HEAD
     
 };
 const addBox2 = (i)=>{
@@ -652,7 +834,16 @@ const addBox2 = (i)=>{
 =======
     spotLight2.position.set(12-wallWidth/2+20, 45, x);
     spotLight2.angle = Math.PI / 4; //조명 범위
+<<<<<<< HEAD
 >>>>>>> 9675acd... organize code
+=======
+=======
+
+    const spotLight2 = new THREE.SpotLight(0xffffff, 1);
+    spotLight2.position.set(12-wallWidth/2+20, 34, x);
+    spotLight2.angle = Math.PI / 5; //조명 범위
+>>>>>>> d3df155... plusstar
+>>>>>>> a0d28e0... plusstar
     spotLight2.penumbra = 0.1; //조명 경계 정도
     spotLight2.decay = 1.2; //조명 투명도
     spotLight2.distance = 70;
@@ -748,6 +939,7 @@ const onPointerMove = (event) => {
     if (intersects.length > 0 || intersects2.length > 0) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         if (intersects[1] != null || intersects2[1] != null) {
             document.querySelector("body").style.cursor = "pointer";
             console.log(intersects2);
@@ -762,6 +954,8 @@ const onPointerMove = (event) => {
 =======
         if (intersects[1] != null || intersects2[1] != null){
 =======
+=======
+>>>>>>> a0d28e0... plusstar
         if (intersects[1] != null){
             document.querySelector("body").style.cursor = "pointer";
             console.log(intersects[0].object.info)
@@ -775,6 +969,19 @@ const onPointerMove = (event) => {
         }
     } else {
         document.querySelector("body").style.cursor = "auto"; 
+=======
+        if (intersects[1] != null || intersects2[1] != null){
+            document.querySelector("body").style.cursor = "pointer";
+            console.log(intersects2)
+        }
+        else{
+            document.querySelector("body").style.cursor = "auto"; 
+        }
+    } else {
+        document.querySelector("body").style.cursor = "auto"; 
+        // console.log(galleryGroup.children)
+        //닿았을 때만 변경 아니면 다시 돌아옴, 빼면 바뀐상태 유지
+>>>>>>> d3df155... plusstar
     }//마우스 닿으면 커서 포인터로 바뀜(바디 태그 변경)
 >>>>>>> ef1839f... first commit
 };
@@ -880,6 +1087,7 @@ const stageResize = () => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     renderer.setPixelRatio(window.devicePixelRatio);
 =======
 >>>>>>> ef1839f... first commit
@@ -888,6 +1096,11 @@ const stageResize = () => {
 >>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
 =======
 >>>>>>> 9675acd... organize code
+=======
+=======
+    renderer.setPixelRatio(window.devicePixelRatio);
+>>>>>>> d3df155... plusstar
+>>>>>>> a0d28e0... plusstar
     renderer.setSize(WIDTH, HEIGHT);
     camera.aspect = WIDTH / HEIGHT;
 };
@@ -895,7 +1108,10 @@ const animate = () => {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> a0d28e0... plusstar
     controls.update();
 <<<<<<< HEAD
 >>>>>>> 9675acd... organize code
@@ -911,7 +1127,12 @@ const animate = () => {
 =======
     particle.rotation.x += 0.004;
     particle.rotation.y += 0.004;
+<<<<<<< HEAD
 >>>>>>> 167b646... change background, whole color
+=======
+=======
+>>>>>>> d3df155... plusstar
+>>>>>>> a0d28e0... plusstar
     // camera.lookAt(scene.position);
 >>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
     camera.updateProjectionMatrix();
@@ -949,6 +1170,7 @@ window.addEventListener("pointermove", onPointerMove);
 <<<<<<< HEAD
 window.addEventListener("mousedown", onDocumentMouseDown);
 <<<<<<< HEAD
+<<<<<<< HEAD
 renderer.domElement.addEventListener('keydown', keydown);
 renderer.domElement.addEventListener('keyup', keyup);
 // document.addEventListener('keydown', onKeyDown);
@@ -965,3 +1187,8 @@ renderer.domElement.addEventListener('keyup', keyup);
 =======
 window.addEventListener("mousedown", onDocumentMouseDown);
 >>>>>>> 9675acd... organize code
+=======
+=======
+window.addEventListener("mousedown", onDocumentMouseDown);
+>>>>>>> d3df155... plusstar
+>>>>>>> a0d28e0... plusstar

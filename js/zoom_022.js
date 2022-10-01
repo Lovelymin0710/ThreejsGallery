@@ -2,11 +2,15 @@ import * as THREE from "https://unpkg.com/three@0.108.0/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.108.0/examples/jsm/controls/OrbitControls.js";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a0d28e0... plusstar
 import { neonCursor } from "https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js";
 
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
 let scene, camera, renderer, circle, skelet, particle;
+<<<<<<< HEAD
 =======
 import { particlesCursor } from "https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js";
 
@@ -21,6 +25,8 @@ let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
 let scene, camera, renderer, circle, skelet, particle;
 >>>>>>> fda533d... add star(background)
+=======
+>>>>>>> a0d28e0... plusstar
 let boxGroup = new THREE.Object3D();
 
 let totalNum = 100; //전체 박스 갯수
@@ -44,6 +50,7 @@ const dataArr = [
     {
         image: "https://source.unsplash.com/collection/2",
 <<<<<<< HEAD
+<<<<<<< HEAD
         link: "http://google.com",
     },
     {
@@ -54,6 +61,8 @@ const dataArr = [
         image: "https://source.unsplash.com/collection/4",
         link: "http://google.com",
 =======
+=======
+>>>>>>> a0d28e0... plusstar
         // link: "./test.html",
     },
     {
@@ -63,7 +72,10 @@ const dataArr = [
     {
         image: "https://source.unsplash.com/collection/4",
         // link: "./test.html",
+<<<<<<< HEAD
 >>>>>>> ef1839f... first commit
+=======
+>>>>>>> a0d28e0... plusstar
     },
     {
         image: "https://source.unsplash.com/collection/5",
@@ -95,12 +107,17 @@ const dataArr = [
     },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     {
         image: "https://source.unsplash.com/collection/15",
 =======
     {
         image: "https://source.unsplash.com/collection/11",
 >>>>>>> fda533d... add star(background)
+=======
+    {
+        image: "https://source.unsplash.com/collection/11",
+>>>>>>> a0d28e0... plusstar
         // link: "./test.html",
     },
     {
@@ -116,10 +133,13 @@ const dataArr = [
         // link: "./test.html",
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> ef1839f... first commit
 =======
 >>>>>>> fda533d... add star(background)
+=======
+>>>>>>> a0d28e0... plusstar
 ];
 
 const init = () => {
@@ -143,8 +163,11 @@ const init = () => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fda533d... add star(background)
+=======
+>>>>>>> a0d28e0... plusstar
     circle = new THREE.Object3D();
     skelet = new THREE.Object3D();
     particle = new THREE.Object3D();
@@ -152,10 +175,14 @@ const init = () => {
     scene.add(particle);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     var geometry = new THREE.TetrahedronGeometry(0.3, 0);
 =======
     var geometry = new THREE.TetrahedronGeometry(0.6, 0);
 >>>>>>> fda533d... add star(background)
+=======
+    var geometry = new THREE.TetrahedronGeometry(0.6, 0);
+>>>>>>> a0d28e0... plusstar
 
     var material = new THREE.MeshPhongMaterial({
         color: "#7e8f80",
@@ -185,15 +212,20 @@ const init = () => {
     lights[1] = new THREE.DirectionalLight("#f5f2f3", 1);
     lights[1].position.set(0.75, 1, 0.5);
 <<<<<<< HEAD
+<<<<<<< HEAD
     lights[2] = new THREE.DirectionalLight("#969e9e", 1);
 =======
     lights[2] = new THREE.DirectionalLight("##969e9e", 1);
 >>>>>>> fda533d... add star(background)
+=======
+    lights[2] = new THREE.DirectionalLight("##969e9e", 1);
+>>>>>>> a0d28e0... plusstar
     lights[2].position.set(-0.75, -1, 0.5);
     scene.add(lights[0]);
     scene.add(lights[1]);
     scene.add(lights[2]);
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     //안개
     const near = 50;
@@ -205,6 +237,10 @@ const init = () => {
     //안개
     const near = 50;
 >>>>>>> fda533d... add star(background)
+=======
+    //안개
+    const near = 50;
+>>>>>>> a0d28e0... plusstar
     const far = 300;
     const color = "#000000";
     scene.fog = new THREE.Fog(color, near, far);
@@ -217,6 +253,7 @@ const init = () => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     //조명 넣기
     var light = new THREE.HemisphereLight(0xffffff, 0x080820, 0.8);
@@ -226,6 +263,8 @@ const init = () => {
 >>>>>>> ef1839f... first commit
 =======
 >>>>>>> fda533d... add star(background)
+=======
+>>>>>>> a0d28e0... plusstar
     // controls = new OrbitControls(camera, renderer.domElement);
     {
     }
@@ -235,16 +274,20 @@ const init = () => {
     scene.add(boxGroup);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     addLight(15, 15, 20);
 >>>>>>> ef1839f... first commit
 =======
 >>>>>>> fda533d... add star(background)
+=======
+>>>>>>> a0d28e0... plusstar
 };
 
 //박스 추가
 const addBox = (i) => {
     const imageMap = new THREE.TextureLoader().load(dataArr[i].image);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     imageMap.wrapS = THREE.RepeatWrapping;
@@ -257,10 +300,15 @@ const addBox = (i) => {
     imageMap.wrapS = THREE.RepeatWrapping;
     imageMap.wrapT = THREE.RepeatWrapping;
 >>>>>>> fda533d... add star(background)
+=======
+    imageMap.wrapS = THREE.RepeatWrapping;
+    imageMap.wrapT = THREE.RepeatWrapping;
+>>>>>>> a0d28e0... plusstar
     // imageMap.repeat.set(1, 4);
 
     const material = new THREE.SpriteMaterial({ map: imageMap });
     const boxMesh = new THREE.Sprite(material);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     boxMesh.scale.set(32, 18, 3);
@@ -270,6 +318,9 @@ const addBox = (i) => {
 =======
     boxMesh.scale.set(32, 18, 3);
 >>>>>>> fda533d... add star(background)
+=======
+    boxMesh.scale.set(32, 18, 3);
+>>>>>>> a0d28e0... plusstar
 
     let x = Math.random() * 100 - 100 / 2;
     let y = Math.random() * 50 - 50 / 2;
@@ -281,6 +332,7 @@ const addBox = (i) => {
     boxGroup.add(boxMesh);
 };
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -302,6 +354,8 @@ const addLight = (...pos) => {
 >>>>>>> ef1839f... first commit
 =======
 >>>>>>> fda533d... add star(background)
+=======
+>>>>>>> a0d28e0... plusstar
 const raycaster = new THREE.Raycaster();
 const pointer = new THREE.Vector2();
 
@@ -358,6 +412,7 @@ const animate = () => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     particle.rotation.x += 0.004;
     particle.rotation.y += 0.004;
     particle.rotation.z += 0.004;
@@ -367,13 +422,18 @@ const animate = () => {
 =======
 >>>>>>> ef1839f... first commit
 =======
+=======
+>>>>>>> a0d28e0... plusstar
     particle.rotation.x += 0.004;
     particle.rotation.y += 0.004;
     // particle.rotation.z += 0.004;
 
     renderer.clear();
 
+<<<<<<< HEAD
 >>>>>>> fda533d... add star(background)
+=======
+>>>>>>> a0d28e0... plusstar
     camera.lookAt(scene.position);
     camera.updateProjectionMatrix();
     renderer.render(scene, camera);
@@ -422,4 +482,8 @@ window.addEventListener("mousemove", (e) => {
 });
 
 window.addEventListener("pointermove", onPointerMove);
+<<<<<<< HEAD
 window.addEventListener("mousedown", onDocumentMouseDown);
+=======
+window.addEventListener("mousedown", onDocumentMouseDown);
+>>>>>>> a0d28e0... plusstar
