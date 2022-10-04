@@ -1,10 +1,10 @@
 import * as THREE from "https://unpkg.com/three@0.108.0/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.108.0/examples/jsm/controls/OrbitControls.js";
-import { particlesCursor } from "https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js";
+import { neonCursor } from "https://unpkg.com/threejs-toys@0.0.8/build/threejs-toys.module.cdn.min.js";
 
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
-let scene, camera, renderer, controls;
+let scene, camera, renderer, circle, skelet, particle;
 let boxGroup = new THREE.Object3D();
 
 let totalNum = 100; //전체 박스 갯수
@@ -65,6 +65,22 @@ const dataArr = [
         image: "https://source.unsplash.com/collection/11",
         // link: "./test.html",
     },
+    {
+        image: "https://source.unsplash.com/collection/11",
+        // link: "./test.html",
+    },
+    {
+        image: "https://source.unsplash.com/collection/12",
+        // link: "./test.html",
+    },
+    {
+        image: "https://source.unsplash.com/collection/13",
+        // link: "./test.html",
+    },
+    {
+        image: "https://source.unsplash.com/collection/14",
+        // link: "./test.html",
+    },
 ];
 
 const init = () => {
@@ -86,8 +102,49 @@ const init = () => {
     document.body.style.height = `${HEIGHT + totalNum * 100}px`;
     //body 스크롤 만들기
 
+    circle = new THREE.Object3D();
+    skelet = new THREE.Object3D();
+    particle = new THREE.Object3D();
+
+    scene.add(particle);
+
+    var geometry = new THREE.TetrahedronGeometry(0.6, 0);
+
+    var material = new THREE.MeshPhongMaterial({
+        color: "#7e8f80",
+        shading: THREE.FlatShading,
+    });
+
+    for (var i = 0; i < 2000; i++) {
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position
+            .set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5)
+            .normalize();
+        mesh.position.multiplyScalar(90 + Math.random() * 700);
+        mesh.rotation.set(
+            Math.random() * 2,
+            Math.random() * 2,
+            Math.random() * 2
+        );
+        particle.add(mesh);
+    }
+
+    var ambientLight = new THREE.AmbientLight(0x999999);
+    scene.add(ambientLight);
+
+    var lights = [];
+    lights[0] = new THREE.DirectionalLight("#c2bbc7", 1);
+    lights[0].position.set(1, 0, 0);
+    lights[1] = new THREE.DirectionalLight("#f5f2f3", 1);
+    lights[1].position.set(0.75, 1, 0.5);
+    lights[2] = new THREE.DirectionalLight("##969e9e", 1);
+    lights[2].position.set(-0.75, -1, 0.5);
+    scene.add(lights[0]);
+    scene.add(lights[1]);
+    scene.add(lights[2]);
+
     //안개
-    const near = 100;
+    const near = 50;
     const far = 300;
     const color = "#000000";
     scene.fog = new THREE.Fog(color, near, far);
@@ -98,11 +155,6 @@ const init = () => {
     // const gridHelper = new THREE.GridHelper(240, 20);
     // scene.add(gridHelper);
 
-    //조명 넣기
-    var light = new THREE.HemisphereLight(0xffffff, 0x080820, 0.8);
-    light.position.set(100, 100, 0);
-    scene.add(light);
-
     // controls = new OrbitControls(camera, renderer.domElement);
     {
     }
@@ -110,19 +162,18 @@ const init = () => {
         addBox(i);
     }
     scene.add(boxGroup);
-    addLight(15, 15, 20);
 };
 
 //박스 추가
 const addBox = (i) => {
     const imageMap = new THREE.TextureLoader().load(dataArr[i].image);
-    // imageMap.wrapS = THREE.RepeatWrapping;
-    // imageMap.wrapT = THREE.RepeatWrapping;
+    imageMap.wrapS = THREE.RepeatWrapping;
+    imageMap.wrapT = THREE.RepeatWrapping;
     // imageMap.repeat.set(1, 4);
 
     const material = new THREE.SpriteMaterial({ map: imageMap });
     const boxMesh = new THREE.Sprite(material);
-    boxMesh.scale.set(32, 18, 1);
+    boxMesh.scale.set(32, 18, 3);
 
     let x = Math.random() * 100 - 100 / 2;
     let y = Math.random() * 50 - 50 / 2;
@@ -132,21 +183,6 @@ const addBox = (i) => {
     boxMesh.link = dataArr[i].link;
     // boxMesh.rotation.set(0, y, 0);
     boxGroup.add(boxMesh);
-};
-
-//조명 넣기
-const addLight = (...pos) => {
-    const color = 0xffffff;
-    const intensity = 0.4;
-    const light = new THREE.PointLight(color, intensity);
-    light.castShadow = true;
-
-    light.position.set(...pos);
-
-    // const helper = new THREE.PointLightHelper(light);
-    // scene.add(helper);
-
-    scene.add(light);
 };
 
 const raycaster = new THREE.Raycaster();
@@ -202,6 +238,12 @@ const animate = () => {
 
     boxGroup.position.x = -(moveX / 50);
     boxGroup.position.y = moveY / 50;
+
+    particle.rotation.x += 0.004;
+    particle.rotation.y += 0.004;
+    // particle.rotation.z += 0.004;
+
+    renderer.clear();
 
     camera.lookAt(scene.position);
     camera.updateProjectionMatrix();
