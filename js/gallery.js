@@ -18,20 +18,28 @@ import { TextGeometry } from '../geometries/TextGeometry.js';
 
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
-let wallWidth;
 
 // const totalNum = 10; //전체 액자 갯수
 const distance = 130; //액자 사이 거리
 
+<<<<<<< HEAD
 let totalNum;
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+>>>>>>> b46e643... change gallery works
 let scene, camera, renderer, controls;
 let galleryGroup = new THREE.Group();
 let galleryGroup2 = new THREE.Group();
 
-const workArr = [
+const sw_work = [
+    // {
+    //     "image": "../image/sw/swimage01.png",
+    //     "link": "../html/sw_Image01.html",
+    //     "info" : '저자1 신기'
+    // },
     {
+<<<<<<< HEAD
         image: "https://source.unsplash.com/collection/0",
         link: "http://google.com",
     },
@@ -77,47 +85,113 @@ let galleryGroup2 = new THREE.Group();
 const workArr = [
     {
         "image": "https://source.unsplash.com/collection/0",
+=======
+        "image": "../image/sw/swimage02.png",
+>>>>>>> b46e643... change gallery works
         "link": "http://google.com",
         "info" : '저자1 신기'
     },
     {
-        "image": "https://source.unsplash.com/collection/1",
+        "image": "../image/sw/swimage03.png",
         "link": "http://google.com",
         "info" : '저자1 신기'
     },
     {
-        "image": "https://source.unsplash.com/collection/2",
+        "image": "../image/sw/swimage04.png",
         "link": "http://google.com",
         "info" : '저자1 신기'
     },
     {
-        "image": "https://source.unsplash.com/collection/3",
+        "image": "../image/sw/swimage05.png",
         "link": "http://google.com",
         "info" : '저자1 신기'
     },
     {
-        "image": "https://source.unsplash.com/collection/4",
+        "image": "../image/sw/swimage06.png",
         "link": "http://google.com",
         "info" : '저자1 신기'
     },
     {
-        "image": "https://source.unsplash.com/collection/5",
+        "image": "../image/sw/swimage07.png",
         "link": "http://google.com",
         "info" : '저자1 신기'
     },
     {
-        "image": "https://source.unsplash.com/collection/6",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
-    },
-    {
-        "image": "https://source.unsplash.com/collection/7",
+        "image": "../image/sw/swimage08.png",
         "link": "http://google.com",
         "info" : '저자1 신기'
     }
 ];
+const hw_work = [
+    {
+        "image": "../image/hw/hwimage01.png",
+        "link": "../html/hw_Image01.html",
+        "info" : '저자1 신기'
+    },
+    {
+        "image": "../image/hw/hwimage02.png",
+        "link": "http://google.com",
+        "info" : '저자1 신기'
+    },
+    {
+        "image": "../image/hw/hwimage03.png",
+        "link": "http://google.com",
+        "info" : '저자1 신기'
+    },
+    {
+        "image": "../image/hw/hwimage04.png",
+        "link": "http://google.com",
+        "info" : '저자1 신기'
+    },
+    {
+        "image": "../image/hw/hwimage05.png",
+        "link": "http://google.com",
+        "info" : '저자1 신기'
+    },
+    {
+        "image": "../image/hw/hwimage06.png",
+        "link": "http://google.com",
+        "info" : '저자1 신기'
+    },
+    // {
+    //     "image": "../image/hw/hwimage07.png",
+    //     "link": "http://google.com",
+    //     "info" : '저자1 신기'
+    // },
+    {
+        "image": "../image/hw/hwimage08.png",
+        "link": "http://google.com",
+        "info" : '저자1 신기'
+    },
+    // {
+    //     "image": "../image/hw/hwimage09.png",
+    //     "link": "http://google.com",
+    //     "info" : '저자1 신기'
+    // },
+    {
+        "image": "../image/hw/hwimage10.png",
+        "link": "http://google.com",
+        "info" : '저자1 신기'
+    },
+    {
+        "image": "../image/hw/hwimage11.png",
+        "link": "http://google.com",
+        "info" : '저자1 신기'
+    },
+    // {
+    //     "image": "../image/hw/hwimage12.png",
+    //     "link": "http://google.com",
+    //     "info" : '저자1 신기'
+    // }
+];
+
+const stotalNum = sw_work.length; //전체 박스 갯수
+const htotalNum = hw_work.length;
+const wallWidth = distance * stotalNum + distance;
+const wallWidth2 = distance * htotalNum + distance;
 
 const init = () => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     
 <<<<<<< HEAD
@@ -136,6 +210,8 @@ const init = () => {
 =======
 >>>>>>> 9675acd... organize code
     totalNum = workArr.length - 1; //전체 박스 갯수
+=======
+>>>>>>> b46e643... change gallery works
 
     scene = new THREE.Scene();
 
@@ -209,6 +285,7 @@ const init = () => {
     // controls.maxPolarAngle = Math.PI / 3; // 수직 궤도
     controls.keyPanSpeed=20;
 
+
     {
         //가벽 만들기
         const imageMap = new THREE.TextureLoader().load("../image/hardwood.jpg");
@@ -218,6 +295,7 @@ const init = () => {
         imageMap.wrapT = THREE.RepeatWrapping;
         imageMap.repeat.set(10, 4);
 
+<<<<<<< HEAD
         wallWidth = distance * totalNum + distance;
 <<<<<<< HEAD
         const geometry = new THREE.BoxGeometry(wallWidth, 100, 2); //x,y,z(두께)
@@ -232,21 +310,27 @@ const init = () => {
             color: 0xF4FAB1,
         });
 =======
+=======
+        
+>>>>>>> b46e643... change gallery works
         const geometry = new THREE.BoxGeometry(wallWidth, 150, 2); //x,y,z(두께)
         const material = new THREE.MeshPhongMaterial({color: 0xF4FAB1});
 >>>>>>> 9675acd... organize code
         const wallMesh = new THREE.Mesh(geometry, material);
+<<<<<<< HEAD
         wallMesh.position.set(0, 0, -wallWidth/2);
 >>>>>>> ef1839f... first commit
+=======
+        wallMesh.position.set(0, 0, -wallWidth2/2);
+>>>>>>> b46e643... change gallery works
         //액자 시작 x축 원점(제어유용), 두께가 2니까 뒤로 좀 빼줌
         wallMesh.receiveShadow = true; //그림자 표시
         // wallMesh.castShadow = true; //그림자 발생
-        wallMesh.frustumCulled=false;
         galleryGroup.add(wallMesh);
         scene.add(galleryGroup);
 
-        const geometry2 = new THREE.BoxGeometry(2, 150, wallWidth);
-        geometry2.computeBoundingSphere();
+        
+        const geometry2 = new THREE.BoxGeometry(2, 150, wallWidth2);
         const wallMesh2 = new THREE.Mesh(geometry2, material);
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -267,21 +351,27 @@ const init = () => {
         //액자 시작 x축 원점(제어유용), 두께가 2니까 뒤로 좀 빼줌
         wallMesh2.receiveShadow = true; //그림자 표시
         // wallMesh.castShadow = true; //그림자 발생
-        wallMesh.frustumCulled=false;
         galleryGroup2.add(wallMesh2);
         scene.add(galleryGroup2);
     }
 
-    for (let i = 0; i < totalNum; i++) {
+    for (let i = 0; i < stotalNum; i++) {
         addBox(i); //액자 갯수만큼 생성
+    }
+    for (let i = 0; i < htotalNum; i++) {
+        addBox2(i); //액자 갯수만큼 생성
     }
     //바닥 그리기
     const floor = new THREE.Mesh(
+<<<<<<< HEAD
 <<<<<<< HEAD
         new THREE.BoxGeometry(wallWidth, 0.1, wallWidth),
         new THREE.MeshPhongMaterial({ color: 0xffffff })
 =======
         new THREE.BoxGeometry(wallWidth, 0.1, wallWidth), 
+=======
+        new THREE.BoxGeometry(wallWidth, 0.1, wallWidth2), 
+>>>>>>> b46e643... change gallery works
         new THREE.MeshPhongMaterial({color: 0xFFFFFF})
 >>>>>>> ef1839f... first commit
     );
@@ -341,11 +431,53 @@ const init = () => {
         font3d.receiveShadow=true;
         scene.add(font3d);
     })
+<<<<<<< HEAD
 >>>>>>> ef1839f... first commit
+=======
+    fontLoader.load('../font/Do Hyeon_Regular.json', (font) => {
+        const geometry = new TextGeometry(
+            "SW→",
+            {
+                font:font,
+                size:15,
+                height:0,
+            }
+        );
+        const material = new THREE.MeshBasicMaterial({color: 0x000000});
+        const swfont = new THREE.Mesh(geometry, material);
+        // font3d.position.set(-wallWidth/4+84,-50, -wallWidth/4)
+        swfont.position.set(-wallWidth/2+40, 40, -wallWidth2/2+15)
+        // font3d.rotateZ(180)
+        swfont.castShadow=true;
+        swfont.receiveShadow=true;
+        scene.add(swfont);
+    })
+    fontLoader.load('../font/Do Hyeon_Regular.json', (font) => {
+        const geometry = new TextGeometry(
+            "WH→",
+            {
+                font:font,
+                size:15,
+                height:0,
+            }
+        );
+        const material = new THREE.MeshBasicMaterial({color: 0x000000});
+        const hwfont = new THREE.Mesh(geometry, material);
+        // font3d.position.set(-wallWidth/4+84,-50, -wallWidth/4)
+        hwfont.position.set(-wallWidth/2+15, 40, -wallWidth2/2+40)
+        // hwfont.rotateX(90)
+        hwfont.rotateY(29.85)
+        // hwfont.rotateZ(55)
+        hwfont.castShadow=true;
+        hwfont.receiveShadow=true;
+        scene.add(hwfont);
+    })
+>>>>>>> b46e643... change gallery works
 };
 
 //액자 추가
 const addBox = (i) => {
+<<<<<<< HEAD
     // const imageMap = new THREE.TextureLoader().load(
 <<<<<<< HEAD
     // "https://source.unsplash.com/collection/" + i, //이미지 랜덤으로 뿌려줌
@@ -366,6 +498,11 @@ const addBox = (i) => {
 =======
     const geometry = new THREE.BoxGeometry(52, 35, 2);
 >>>>>>> 9675acd... organize code
+=======
+    const imageMap = new THREE.TextureLoader().load(sw_work[i].image);
+    console.log(imageMap);
+    const geometry = new THREE.BoxGeometry(40, 50, 2);
+>>>>>>> b46e643... change gallery works
     const material = new THREE.MeshPhongMaterial({map: imageMap});
     const boxMesh = new THREE.Mesh(geometry, material);
     boxMesh.castShadow = true;
@@ -373,8 +510,9 @@ const addBox = (i) => {
 >>>>>>> ef1839f... first commit
     // let x = (wallWidth/workArr.length)*i
     console.log(x);
-    let y = 10; //Math.random() * 40 - 5;
+    let y = 8; //Math.random() * 40 - 5;
     let z = 0;
+<<<<<<< HEAD
 <<<<<<< HEAD
     boxMesh.position.set(x, y, -wallWidth / 2 + 2);
     boxMesh.name = "workofArt_${i}";
@@ -400,6 +538,14 @@ const addBox = (i) => {
     boxMesh2.info = workArr[i].info;
     galleryGroup2.add(boxMesh2);
 
+=======
+    boxMesh.position.set(x, y, -wallWidth2/2+2);
+    boxMesh.name = 'workofArt_${i}';
+    boxMesh.link = sw_work[i].link;
+    boxMesh.info = sw_work[i].info;
+    galleryGroup.add(boxMesh);
+
+>>>>>>> b46e643... change gallery works
     //조명 넣기
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -420,9 +566,14 @@ const addBox = (i) => {
     spotLight.angle = Math.PI / 5; //조명 범위
 =======
     const spotLight = new THREE.SpotLight(0xffffff, 1);
+<<<<<<< HEAD
     spotLight.position.set(x, 45, 12-wallWidth/2+20);
     spotLight.angle = Math.PI / 4; //조명 범위
 >>>>>>> 9675acd... organize code
+=======
+    spotLight.position.set(x, 55, 12-wallWidth2/2+20);
+    spotLight.angle = Math.PI / 4.5; //조명 범위
+>>>>>>> b46e643... change gallery works
     spotLight.penumbra = 0.1; //조명 경계 정도
     spotLight.decay = 1.2; //조명 투명도
     spotLight.distance = 70;
@@ -433,6 +584,23 @@ const addBox = (i) => {
 
     // const spotLightHelper = new THREE.SpotLightHelper(spotLight);
     // scene.add(spotLightHelper);
+    
+};
+const addBox2 = (i)=>{
+
+    const imageMap2 = new THREE.TextureLoader().load(hw_work[i].image);
+    const geometry2 = new THREE.BoxGeometry(2, 35, 52);
+    const material2 = new THREE.MeshPhongMaterial({map: imageMap2});
+    const boxMesh2 = new THREE.Mesh(geometry2, material2);
+    boxMesh2.castShadow = true;
+    let x = -(wallWidth2/2)+ (i+1) * distance;
+    let y = 8; //Math.random() * 40 - 5;
+    let z = 0;
+    boxMesh2.position.set(-wallWidth/2+2, y, x);
+    boxMesh2.name = 'workofArt_${i}';
+    boxMesh2.link = hw_work[i].link;
+    boxMesh2.info = hw_work[i].info;
+    galleryGroup2.add(boxMesh2);
 
     const spotLight2 = new THREE.SpotLight(0xffffff, 1);
 <<<<<<< HEAD
@@ -456,6 +624,7 @@ const addBox = (i) => {
 
     // const spotLightHelper2 = new THREE.SpotLightHelper(spotLight2);
     // scene.add(spotLightHelper2);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -514,6 +683,8 @@ const addBox = (i) => {
 =======
     
 >>>>>>> 9675acd... organize code
+=======
+>>>>>>> b46e643... change gallery works
 };
 >>>>>>> a35e401... 카메라 이동 수정(원점으로 향하는 문제 해결)
 
