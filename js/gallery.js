@@ -9,7 +9,7 @@ let HEIGHT = window.innerHeight;
 // const totalNum = 10; //전체 액자 갯수
 const distance = 130; //액자 사이 거리
 
-let scene, camera, renderer, controls;
+let scene, camera, renderer, controls, circle, skelet, particle;
 let galleryGroup = new THREE.Group();
 let galleryGroup2 = new THREE.Group();
 
@@ -127,9 +127,9 @@ const init = () => {
 
     scene = new THREE.Scene();
 
-    scene.background = new THREE.Color("#99B1F0"); //배경 컬러
-    camera = new THREE.PerspectiveCamera(30, WIDTH / HEIGHT, 10, 2000);
-    camera.position.set(300, 50, 300);
+    scene.background = new THREE.Color("#000000"); //배경 컬러
+    camera = new THREE.PerspectiveCamera(35, WIDTH / HEIGHT, 10, 2000);
+    camera.position.set(142, 20, 180);
 
     renderer = new THREE.WebGLRenderer({ antialias: true});
     renderer.setSize(WIDTH, HEIGHT);
@@ -147,6 +147,49 @@ const init = () => {
     // const gridHelper = new THREE.GridHelper(240, 20);
     // scene.add(gridHelper);
 
+    //움직이는 배경
+    circle = new THREE.Object3D();
+    skelet = new THREE.Object3D();
+    particle = new THREE.Object3D();
+
+    scene.add(particle);
+
+    var geometry = new THREE.TetrahedronGeometry(0.6, 0);
+
+    var material = new THREE.MeshPhongMaterial({
+        // color: "#7e8f80",
+        color:'#FFFFFF',
+        shading: THREE.FlatShading,
+    });
+
+    for (var i = 0; i < 2000; i++) {
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position
+            .set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5)
+            .normalize();
+        mesh.position.multiplyScalar(90 + Math.random() * 700);
+        mesh.rotation.set(
+            Math.random() * 2,
+            Math.random() * 2,
+            Math.random() * 2
+        );
+        particle.add(mesh);
+    }
+
+    // var ambientLight = new THREE.AmbientLight(0x999999);
+    // scene.add(ambientLight);
+
+    // var lights = [];
+    // lights[0] = new THREE.DirectionalLight("#c2bbc7", 1);
+    // lights[0].position.set(1, 0, 0);
+    // lights[1] = new THREE.DirectionalLight("#f5f2f3", 1);
+    // lights[1].position.set(0.75, 1, 0.5);
+    // lights[2] = new THREE.DirectionalLight("##969e9e", 1);
+    // lights[2].position.set(-0.75, -1, 0.5);
+    // scene.add(lights[0]);
+    // scene.add(lights[1]);
+    // scene.add(lights[2]);
+
     //조명 넣기
     var light = new THREE.HemisphereLight(0xFFFFFF, 0xFFFFFF, 0.45);
     light.position.set(0, 80, -50);
@@ -156,16 +199,14 @@ const init = () => {
     light2.position.set(-50, 80, 0);
     scene.add(light2);
 
-    const helper = new THREE.HemisphereLightHelper( light, 5 );
-    scene.add( helper );
-    const helper2 = new THREE.HemisphereLightHelper( light2, 5 );
-    scene.add( helper2 );
+    // const helper = new THREE.HemisphereLightHelper( light, 5 );
+    // scene.add( helper );
+    // const helper2 = new THREE.HemisphereLightHelper( light2, 5 );
+    // scene.add( helper2 );
 
     controls = new OrbitControls(camera, renderer.domElement);
     controls.maxDistance=1000;
-    // controls.maxPolarAngle = Math.PI / 3; // 수직 궤도
     controls.keyPanSpeed=20;
-
 
     {
         //가벽 만들기
@@ -177,7 +218,7 @@ const init = () => {
 
         
         const geometry = new THREE.BoxGeometry(wallWidth, 150, 2); //x,y,z(두께)
-        const material = new THREE.MeshPhongMaterial({color: 0xF4FAB1});
+        const material = new THREE.MeshPhongMaterial({color: 0x6B6B6B});
         const wallMesh = new THREE.Mesh(geometry, material);
         wallMesh.position.set(0, 0, -wallWidth2/2);
         //액자 시작 x축 원점(제어유용), 두께가 2니까 뒤로 좀 빼줌
@@ -206,7 +247,7 @@ const init = () => {
     //바닥 그리기
     const floor = new THREE.Mesh(
         new THREE.BoxGeometry(wallWidth, 0.1, wallWidth2), 
-        new THREE.MeshPhongMaterial({color: 0xFFFFFF})
+        new THREE.MeshPhongMaterial({color: 0xBDBDBD})
     );
     floor.frustumCulled=false;
     floor.position.set(0, -75, 0);
@@ -224,12 +265,11 @@ const init = () => {
                 height:8,
             }
         );
-        const material = new THREE.MeshBasicMaterial({color: 0xffffff});
+        const material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
         const font3d = new THREE.Mesh(geometry, material);
-        // font3d.position.set(-wallWidth/4+84,-50, -wallWidth/4)
-        font3d.position.set(-225,-70, 20)
+        font3d.position.set(-210,-60, 10)
         // font3d.rotateZ(180)
-        font3d.rotateY(44.8)
+        font3d.rotateY(44.7)
         font3d.castShadow=true;
         font3d.receiveShadow=true;
         scene.add(font3d);
@@ -241,13 +281,13 @@ const init = () => {
                 font:font,
                 size:15,
                 height:0,
+                style:'italic'
             }
         );
         const material = new THREE.MeshBasicMaterial({color: 0x000000});
         const swfont = new THREE.Mesh(geometry, material);
-        // font3d.position.set(-wallWidth/4+84,-50, -wallWidth/4)
         swfont.position.set(-wallWidth/2+40, 40, -wallWidth2/2+15)
-        // font3d.rotateZ(180)
+        swfont.outline=true;
         swfont.castShadow=true;
         swfont.receiveShadow=true;
         scene.add(swfont);
@@ -263,11 +303,8 @@ const init = () => {
         );
         const material = new THREE.MeshBasicMaterial({color: 0x000000});
         const hwfont = new THREE.Mesh(geometry, material);
-        // font3d.position.set(-wallWidth/4+84,-50, -wallWidth/4)
         hwfont.position.set(-wallWidth/2+15, 40, -wallWidth2/2+40)
-        // hwfont.rotateX(90)
         hwfont.rotateY(29.85)
-        // hwfont.rotateZ(55)
         hwfont.castShadow=true;
         hwfont.receiveShadow=true;
         scene.add(hwfont);
@@ -408,6 +445,8 @@ const stageResize = () => {
 };
 const animate = () => {
     controls.update();
+    particle.rotation.x += 0.004;
+    particle.rotation.y += 0.004;
     // camera.lookAt(scene.position);
     camera.updateProjectionMatrix();
     renderer.render(scene, camera);
