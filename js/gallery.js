@@ -14,11 +14,11 @@ let galleryGroup = new THREE.Group();
 let galleryGroup2 = new THREE.Group();
 
 const sw_work = [
-    // {
-    //     "image": "../image/sw/swimage01.png",
-    //     "link": "../html/sw_Image01.html",
-    //     "info" : '저자1 신기'
-    // },
+    {
+        "image": "../image/sw/swimage01.png",
+        "link": "../html/sw/sw_Image01.html",
+        "info" : '저자1 신기'
+    },
     {
         "image": "../image/sw/swimage02.png",
         "link": "http://google.com",
@@ -46,11 +46,6 @@ const sw_work = [
     },
     {
         "image": "../image/sw/swimage07.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
-    },
-    {
-        "image": "../image/sw/swimage08.png",
         "link": "http://google.com",
         "info" : '저자1 신기'
     }
@@ -86,36 +81,21 @@ const hw_work = [
         "link": "http://google.com",
         "info" : '저자1 신기'
     },
-    // {
-    //     "image": "../image/hw/hwimage07.png",
-    //     "link": "http://google.com",
-    //     "info" : '저자1 신기'
-    // },
+    {
+        "image": "../image/hw/hwimage07.png",
+        "link": "http://google.com",
+        "info" : '저자1 신기'
+    },
     {
         "image": "../image/hw/hwimage08.png",
         "link": "http://google.com",
         "info" : '저자1 신기'
     },
-    // {
-    //     "image": "../image/hw/hwimage09.png",
-    //     "link": "http://google.com",
-    //     "info" : '저자1 신기'
-    // },
     {
-        "image": "../image/hw/hwimage10.png",
+        "image": "../image/hw/hwimage09.png",
         "link": "http://google.com",
         "info" : '저자1 신기'
-    },
-    {
-        "image": "../image/hw/hwimage11.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
-    },
-    // {
-    //     "image": "../image/hw/hwimage12.png",
-    //     "link": "http://google.com",
-    //     "info" : '저자1 신기'
-    // }
+    }
 ];
 
 const stotalNum = sw_work.length; //전체 박스 갯수
