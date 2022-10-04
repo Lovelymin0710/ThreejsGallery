@@ -363,12 +363,16 @@ const init = () => {
 =======
 =======
         
+<<<<<<< HEAD
 >>>>>>> b46e643... change gallery works
         const geometry = new THREE.BoxGeometry(wallWidth, 150, 2); //x,y,z(두께)
 <<<<<<< HEAD
         const material = new THREE.MeshPhongMaterial({color: 0xF4FAB1});
 >>>>>>> 9675acd... organize code
 =======
+=======
+        const geometry = new THREE.BoxGeometry(wallWidth+2, 150, 2); //x,y,z(두께)
+>>>>>>> df9ec79... change wall length
         const material = new THREE.MeshPhongMaterial({color: 0x6B6B6B});
 >>>>>>> 167b646... change background, whole color
         const wallMesh = new THREE.Mesh(geometry, material);
