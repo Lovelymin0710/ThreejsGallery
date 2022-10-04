@@ -217,7 +217,7 @@ const init = () => {
         imageMap.repeat.set(10, 4);
 
         
-        const geometry = new THREE.BoxGeometry(wallWidth, 150, 2); //x,y,z(두께)
+        const geometry = new THREE.BoxGeometry(wallWidth+2, 150, 2); //x,y,z(두께)
         const material = new THREE.MeshPhongMaterial({color: 0x6B6B6B});
         const wallMesh = new THREE.Mesh(geometry, material);
         wallMesh.position.set(0, 0, -wallWidth2/2);
