@@ -1,7 +1,7 @@
 import * as THREE from "https://unpkg.com/three@0.108.0/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.108.0/examples/jsm/controls/OrbitControls.js";
 import { FontLoader } from "../loaders/FontLoader.js";
-import { TextGeometry } from '../geometries/TextGeometry.js';
+import { TextGeometry } from "../geometries/TextGeometry.js";
 
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
@@ -15,87 +15,87 @@ let galleryGroup2 = new THREE.Group();
 
 const sw_work = [
     {
-        "image": "../image/sw/swimage01.png",
-        "link": "../html/sw/sw_Image01.html",
-        "info" : '저자1 신기'
+        image: "../image/sw/swimage01.png",
+        link: "../html/sw/sw_Image01.html",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/sw/swimage02.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/sw/swimage02.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/sw/swimage03.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/sw/swimage03.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/sw/swimage04.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/sw/swimage04.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/sw/swimage05.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/sw/swimage05.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/sw/swimage06.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/sw/swimage06.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/sw/swimage07.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
-    }
+        image: "../image/sw/swimage07.png",
+        link: "http://google.com",
+        info: "저자1 신기",
+    },
 ];
 const hw_work = [
     {
-        "image": "../image/hw/hwimage01.png",
-        "link": "../html/hw_Image01.html",
-        "info" : '저자1 신기'
+        image: "../image/hw/hwimage01.png",
+        link: "../html/hw_Image01.html",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/hw/hwimage02.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/hw/hwimage02.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/hw/hwimage03.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/hw/hwimage03.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/hw/hwimage04.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/hw/hwimage04.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/hw/hwimage05.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/hw/hwimage05.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/hw/hwimage06.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/hw/hwimage06.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/hw/hwimage07.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/hw/hwimage07.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/hw/hwimage08.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
+        image: "../image/hw/hwimage08.png",
+        link: "http://google.com",
+        info: "저자1 신기",
     },
     {
-        "image": "../image/hw/hwimage09.png",
-        "link": "http://google.com",
-        "info" : '저자1 신기'
-    }
+        image: "../image/hw/hwimage09.png",
+        link: "http://google.com",
+        info: "저자1 신기",
+    },
 ];
 
 const stotalNum = sw_work.length; //전체 박스 갯수
@@ -104,14 +104,13 @@ const wallWidth = distance * stotalNum + distance;
 const wallWidth2 = distance * htotalNum + distance;
 
 const init = () => {
-
     scene = new THREE.Scene();
 
     scene.background = new THREE.Color("#000000"); //배경 컬러
     camera = new THREE.PerspectiveCamera(35, WIDTH / HEIGHT, 10, 2000);
     camera.position.set(142, 20, 180);
 
-    renderer = new THREE.WebGLRenderer({ antialias: true});
+    renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(WIDTH, HEIGHT);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.shadowMap.enabled = true;
@@ -128,17 +127,14 @@ const init = () => {
     // scene.add(gridHelper);
 
     //움직이는 배경
-    circle = new THREE.Object3D();
-    skelet = new THREE.Object3D();
     particle = new THREE.Object3D();
-
     scene.add(particle);
 
-    var geometry = new THREE.TetrahedronGeometry(0.6, 0);
+    var geometry = new THREE.TetrahedronGeometry(1.8, 0);
 
     var material = new THREE.MeshPhongMaterial({
         // color: "#7e8f80",
-        color:'#FFFFFF',
+        color: "#FFFFFF",
         shading: THREE.FlatShading,
     });
 
@@ -147,7 +143,7 @@ const init = () => {
         mesh.position
             .set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5)
             .normalize();
-        mesh.position.multiplyScalar(90 + Math.random() * 700);
+        mesh.position.multiplyScalar(820 + Math.random() * 700);
         mesh.rotation.set(
             Math.random() * 2,
             Math.random() * 2,
@@ -171,11 +167,11 @@ const init = () => {
     // scene.add(lights[2]);
 
     //조명 넣기
-    var light = new THREE.HemisphereLight(0xFFFFFF, 0xFFFFFF, 0.45);
+    var light = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.45);
     light.position.set(0, 80, -50);
     scene.add(light);
 
-    var light2 = new THREE.HemisphereLight(0xFFFFFF, 0xFFFFFF, 0.45);
+    var light2 = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.45);
     light2.position.set(-50, 80, 0);
     scene.add(light2);
 
@@ -185,32 +181,38 @@ const init = () => {
     // scene.add( helper2 );
 
     controls = new OrbitControls(camera, renderer.domElement);
-    controls.maxDistance=1000;
-    controls.keyPanSpeed=20;
+    controls.maxDistance = 1000;
+    controls.keyPanSpeed = 200;
 
     {
         //가벽 만들기
-        const imageMap = new THREE.TextureLoader().load("../image/hardwood.jpg");
+        const imageMap = new THREE.TextureLoader().load(
+            "../image/hardwood.jpg"
+        );
 
         imageMap.wrapS = THREE.RepeatWrapping;
         imageMap.wrapT = THREE.RepeatWrapping;
+
         imageMap.repeat.set(10, 4);
 
-        
-        const geometry = new THREE.BoxGeometry(wallWidth+2, 150, 2); //x,y,z(두께)
-        const material = new THREE.MeshPhongMaterial({color: 0x6B6B6B});
+        const geometry = new THREE.BoxGeometry(wallWidth + 2, 150, 2); //x,y,z(두께)
+        const material = new THREE.MeshPhongMaterial({
+            color: "#81878a",
+            transparent: true,
+            opacity: 1,
+        });
         const wallMesh = new THREE.Mesh(geometry, material);
-        wallMesh.position.set(0, 0, -wallWidth2/2);
+
+        wallMesh.position.set(0, 0, -wallWidth2 / 2);
         //액자 시작 x축 원점(제어유용), 두께가 2니까 뒤로 좀 빼줌
         wallMesh.receiveShadow = true; //그림자 표시
         // wallMesh.castShadow = true; //그림자 발생
         galleryGroup.add(wallMesh);
         scene.add(galleryGroup);
 
-        
         const geometry2 = new THREE.BoxGeometry(2, 150, wallWidth2);
         const wallMesh2 = new THREE.Mesh(geometry2, material);
-        wallMesh2.position.set(-wallWidth/2, 0, 0);
+        wallMesh2.position.set(-wallWidth / 2, 0, 0);
         //액자 시작 x축 원점(제어유용), 두께가 2니까 뒤로 좀 빼줌
         wallMesh2.receiveShadow = true; //그림자 표시
         // wallMesh.castShadow = true; //그림자 발생
@@ -226,69 +228,64 @@ const init = () => {
     }
     //바닥 그리기
     const floor = new THREE.Mesh(
-        new THREE.BoxGeometry(wallWidth, 0.1, wallWidth2), 
-        new THREE.MeshPhongMaterial({color: 0xBDBDBD})
+        new THREE.BoxGeometry(wallWidth, 0.1, wallWidth2),
+        new THREE.MeshBasicMaterial({
+            color: 0xbdbdbd,
+            transparent: true,
+            opacity: 1,
+        })
     );
-    floor.frustumCulled=false;
+    floor.frustumCulled = false;
     floor.position.set(0, -75, 0);
     scene.add(floor);
     // floor.receiveShadow=true;
 
     //텍스트 로딩
     const fontLoader = new FontLoader();
-    fontLoader.load('../font/Do Hyeon_Regular.json', (font) => {
-        const geometry = new TextGeometry(
-            "졸업,작품전시회",
-            {
-                font:font,
-                size:45,
-                height:8,
-            }
-        );
-        const material = new THREE.MeshBasicMaterial({color: 0xFFFFFF});
+    fontLoader.load("../font/Do Hyeon_Regular.json", (font) => {
+        const geometry = new TextGeometry("졸업,작품전시회", {
+            font: font,
+            size: 45,
+            height: 8,
+        });
+        const material = new THREE.MeshBasicMaterial({ color: 0xffffff });
         const font3d = new THREE.Mesh(geometry, material);
-        font3d.position.set(-210,-60, 10)
+        font3d.position.set(-210, -60, 10);
         // font3d.rotateZ(180)
-        font3d.rotateY(44.7)
-        font3d.castShadow=true;
-        font3d.receiveShadow=true;
+        font3d.rotateY(44.7);
+        font3d.castShadow = true;
+        font3d.receiveShadow = true;
         scene.add(font3d);
-    })
-    fontLoader.load('../font/Do Hyeon_Regular.json', (font) => {
-        const geometry = new TextGeometry(
-            "SW→",
-            {
-                font:font,
-                size:15,
-                height:0,
-                style:'italic'
-            }
-        );
-        const material = new THREE.MeshBasicMaterial({color: 0x000000});
+    });
+    fontLoader.load("../font/Do Hyeon_Regular.json", (font) => {
+        const geometry = new TextGeometry("SW→", {
+            font: font,
+            size: 15,
+            height: 0,
+            style: "italic",
+        });
+        const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
         const swfont = new THREE.Mesh(geometry, material);
-        swfont.position.set(-wallWidth/2+40, 40, -wallWidth2/2+15)
-        swfont.outline=true;
-        swfont.castShadow=true;
-        swfont.receiveShadow=true;
+        swfont.position.set(-wallWidth / 2 + 40, 40, -wallWidth2 / 2 + 15);
+        swfont.outline = true;
+        swfont.castShadow = true;
+        swfont.receiveShadow = true;
         scene.add(swfont);
-    })
-    fontLoader.load('../font/Do Hyeon_Regular.json', (font) => {
-        const geometry = new TextGeometry(
-            "WH→",
-            {
-                font:font,
-                size:15,
-                height:0,
-            }
-        );
-        const material = new THREE.MeshBasicMaterial({color: 0x000000});
+    });
+    fontLoader.load("../font/Do Hyeon_Regular.json", (font) => {
+        const geometry = new TextGeometry("WH→", {
+            font: font,
+            size: 15,
+            height: 0,
+        });
+        const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
         const hwfont = new THREE.Mesh(geometry, material);
-        hwfont.position.set(-wallWidth/2+15, 40, -wallWidth2/2+40)
-        hwfont.rotateY(29.85)
-        hwfont.castShadow=true;
-        hwfont.receiveShadow=true;
+        hwfont.position.set(-wallWidth / 2 + 15, 40, -wallWidth2 / 2 + 40);
+        hwfont.rotateY(29.85);
+        hwfont.castShadow = true;
+        hwfont.receiveShadow = true;
         scene.add(hwfont);
-    })
+    });
 };
 
 //액자 추가
@@ -296,23 +293,23 @@ const addBox = (i) => {
     const imageMap = new THREE.TextureLoader().load(sw_work[i].image);
     console.log(imageMap);
     const geometry = new THREE.BoxGeometry(40, 50, 2);
-    const material = new THREE.MeshPhongMaterial({map: imageMap});
+    const material = new THREE.MeshPhongMaterial({ map: imageMap });
     const boxMesh = new THREE.Mesh(geometry, material);
     boxMesh.castShadow = true;
-    let x = -(wallWidth/2)+ (i+1) * distance;
+    let x = -(wallWidth / 2) + (i + 1) * distance;
     // let x = (wallWidth/workArr.length)*i
     console.log(x);
     let y = 8; //Math.random() * 40 - 5;
     let z = 0;
-    boxMesh.position.set(x, y, -wallWidth2/2+2);
-    boxMesh.name = 'workofArt_${i}';
+    boxMesh.position.set(x, y, -wallWidth2 / 2 + 2);
+    boxMesh.name = "workofArt_${i}";
     boxMesh.link = sw_work[i].link;
     boxMesh.info = sw_work[i].info;
     galleryGroup.add(boxMesh);
 
     //조명 넣기
     const spotLight = new THREE.SpotLight(0xffffff, 1);
-    spotLight.position.set(x, 55, 12-wallWidth2/2+20);
+    spotLight.position.set(x, 55, 12 - wallWidth2 / 2 + 20);
     spotLight.angle = Math.PI / 4.5; //조명 범위
     spotLight.penumbra = 0.1; //조명 경계 정도
     spotLight.decay = 1.2; //조명 투명도
@@ -324,26 +321,24 @@ const addBox = (i) => {
 
     // const spotLightHelper = new THREE.SpotLightHelper(spotLight);
     // scene.add(spotLightHelper);
-    
 };
-const addBox2 = (i)=>{
-
+const addBox2 = (i) => {
     const imageMap2 = new THREE.TextureLoader().load(hw_work[i].image);
     const geometry2 = new THREE.BoxGeometry(2, 35, 52);
-    const material2 = new THREE.MeshPhongMaterial({map: imageMap2});
+    const material2 = new THREE.MeshPhongMaterial({ map: imageMap2 });
     const boxMesh2 = new THREE.Mesh(geometry2, material2);
     boxMesh2.castShadow = true;
-    let x = -(wallWidth2/2)+ (i+1) * distance;
+    let x = -(wallWidth2 / 2) + (i + 1) * distance;
     let y = 8; //Math.random() * 40 - 5;
     let z = 0;
-    boxMesh2.position.set(-wallWidth/2+2, y, x);
-    boxMesh2.name = 'workofArt_${i}';
+    boxMesh2.position.set(-wallWidth / 2 + 2, y, x);
+    boxMesh2.name = "workofArt_${i}";
     boxMesh2.link = hw_work[i].link;
     boxMesh2.info = hw_work[i].info;
     galleryGroup2.add(boxMesh2);
 
     const spotLight2 = new THREE.SpotLight(0xffffff, 1);
-    spotLight2.position.set(12-wallWidth/2+20, 45, x);
+    spotLight2.position.set(12 - wallWidth / 2 + 20, 45, x);
     spotLight2.angle = Math.PI / 4; //조명 범위
     spotLight2.penumbra = 0.1; //조명 경계 정도
     spotLight2.decay = 1.2; //조명 투명도
@@ -376,19 +371,17 @@ const onPointerMove = (event) => {
     // }
 
     if (intersects.length > 0 || intersects2.length > 0) {
-        if (intersects[1] != null){
+        if (intersects[1] != null) {
             document.querySelector("body").style.cursor = "pointer";
-            console.log(intersects[0].object.info)
-        }
-        else if(intersects2[1] != null){
+            console.log(intersects[0].object.info);
+        } else if (intersects2[1] != null) {
             document.querySelector("body").style.cursor = "pointer";
-        }
-        else{
+        } else {
             document.querySelector("body").style.cursor = "auto";
         }
     } else {
-        document.querySelector("body").style.cursor = "auto"; 
-    }//마우스 닿으면 커서 포인터로 바뀜(바디 태그 변경)
+        document.querySelector("body").style.cursor = "auto";
+    } //마우스 닿으면 커서 포인터로 바뀜(바디 태그 변경)
 };
 
 const onDocumentMouseDown = (event) => {
@@ -400,14 +393,13 @@ const onDocumentMouseDown = (event) => {
     const intersects2 = raycaster.intersectObjects(galleryGroup2.children);
 
     if (intersects.length > 0 || intersects2.length > 0) {
-        if (intersects[1] != null){
+        if (intersects[1] != null) {
             const item = intersects[0].object;
             const itemName = item.name;
             window.open(item.link, "_blank");
             // console.log(item.link);
             controls.reset(controls.saveState());
-        }
-        else if(intersects2[1] != null){
+        } else if (intersects2[1] != null) {
             const item2 = intersects2[0].object;
             window.open(item2.link, "_blank");
             controls.reset(controls.saveState());
@@ -425,8 +417,8 @@ const stageResize = () => {
 };
 const animate = () => {
     controls.update();
-    particle.rotation.x += 0.004;
-    particle.rotation.y += 0.004;
+    particle.rotation.x += 0.003;
+    particle.rotation.y += 0.002;
     // camera.lookAt(scene.position);
     camera.updateProjectionMatrix();
     renderer.render(scene, camera);
