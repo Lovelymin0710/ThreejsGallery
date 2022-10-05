@@ -51,6 +51,7 @@ const dataArr = [
         image: "https://source.unsplash.com/collection/2",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         link: "http://google.com",
     },
     {
@@ -64,18 +65,25 @@ const dataArr = [
 =======
 >>>>>>> a0d28e0... plusstar
         // link: "./test.html",
+=======
+        link: "http://google.com",
+>>>>>>> 309216a... link
     },
     {
         image: "https://source.unsplash.com/collection/3",
-        // link: "./test.html",
+        link: "http://google.com",
     },
     {
         image: "https://source.unsplash.com/collection/4",
+<<<<<<< HEAD
         // link: "./test.html",
 <<<<<<< HEAD
 >>>>>>> ef1839f... first commit
 =======
 >>>>>>> a0d28e0... plusstar
+=======
+        link: "http://google.com",
+>>>>>>> 309216a... link
     },
     {
         image: "https://source.unsplash.com/collection/5",
@@ -116,8 +124,12 @@ const dataArr = [
 >>>>>>> fda533d... add star(background)
 =======
     {
+<<<<<<< HEAD
         image: "https://source.unsplash.com/collection/11",
 >>>>>>> a0d28e0... plusstar
+=======
+        image: "https://source.unsplash.com/collection/15",
+>>>>>>> 309216a... link
         // link: "./test.html",
     },
     {
@@ -176,6 +188,7 @@ const init = () => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     var geometry = new THREE.TetrahedronGeometry(0.3, 0);
 =======
     var geometry = new THREE.TetrahedronGeometry(0.6, 0);
@@ -183,6 +196,9 @@ const init = () => {
 =======
     var geometry = new THREE.TetrahedronGeometry(0.6, 0);
 >>>>>>> a0d28e0... plusstar
+=======
+    var geometry = new THREE.TetrahedronGeometry(0.3, 0);
+>>>>>>> 309216a... link
 
     var material = new THREE.MeshPhongMaterial({
         color: "#7e8f80",
@@ -213,6 +229,7 @@ const init = () => {
     lights[1].position.set(0.75, 1, 0.5);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     lights[2] = new THREE.DirectionalLight("#969e9e", 1);
 =======
     lights[2] = new THREE.DirectionalLight("##969e9e", 1);
@@ -220,6 +237,9 @@ const init = () => {
 =======
     lights[2] = new THREE.DirectionalLight("##969e9e", 1);
 >>>>>>> a0d28e0... plusstar
+=======
+    lights[2] = new THREE.DirectionalLight("#969e9e", 1);
+>>>>>>> 309216a... link
     lights[2].position.set(-0.75, -1, 0.5);
     scene.add(lights[0]);
     scene.add(lights[1]);
@@ -426,7 +446,7 @@ const animate = () => {
 >>>>>>> a0d28e0... plusstar
     particle.rotation.x += 0.004;
     particle.rotation.y += 0.004;
-    // particle.rotation.z += 0.004;
+    particle.rotation.z += 0.004;
 
     renderer.clear();
 
