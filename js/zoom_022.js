@@ -27,15 +27,15 @@ const dataArr = [
     },
     {
         image: "https://source.unsplash.com/collection/2",
-        // link: "./test.html",
+        link: "http://google.com",
     },
     {
         image: "https://source.unsplash.com/collection/3",
-        // link: "./test.html",
+        link: "http://google.com",
     },
     {
         image: "https://source.unsplash.com/collection/4",
-        // link: "./test.html",
+        link: "http://google.com",
     },
     {
         image: "https://source.unsplash.com/collection/5",
@@ -66,7 +66,7 @@ const dataArr = [
         // link: "./test.html",
     },
     {
-        image: "https://source.unsplash.com/collection/11",
+        image: "https://source.unsplash.com/collection/15",
         // link: "./test.html",
     },
     {
@@ -108,7 +108,7 @@ const init = () => {
 
     scene.add(particle);
 
-    var geometry = new THREE.TetrahedronGeometry(0.6, 0);
+    var geometry = new THREE.TetrahedronGeometry(0.3, 0);
 
     var material = new THREE.MeshPhongMaterial({
         color: "#7e8f80",
@@ -137,7 +137,7 @@ const init = () => {
     lights[0].position.set(1, 0, 0);
     lights[1] = new THREE.DirectionalLight("#f5f2f3", 1);
     lights[1].position.set(0.75, 1, 0.5);
-    lights[2] = new THREE.DirectionalLight("##969e9e", 1);
+    lights[2] = new THREE.DirectionalLight("#969e9e", 1);
     lights[2].position.set(-0.75, -1, 0.5);
     scene.add(lights[0]);
     scene.add(lights[1]);
@@ -241,7 +241,7 @@ const animate = () => {
 
     particle.rotation.x += 0.004;
     particle.rotation.y += 0.004;
-    // particle.rotation.z += 0.004;
+    particle.rotation.z += 0.004;
 
     renderer.clear();
 
