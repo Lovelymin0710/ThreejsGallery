@@ -197,7 +197,7 @@ const init = () => {
 
         const geometry = new THREE.BoxGeometry(wallWidth + 2, 150, 2); //x,y,z(두께)
         const material = new THREE.MeshPhongMaterial({
-            color: "#81878a",
+            color: 0x6b6b6b,
             transparent: true,
             opacity: 1,
         });
