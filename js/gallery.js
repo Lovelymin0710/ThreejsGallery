@@ -166,7 +166,7 @@ const init = () => {
 
     controls = new OrbitControls(camera, renderer.domElement);
     controls.maxDistance = 1000;
-    controls.keyPanSpeed = 200;
+    controls.keyPanSpeed = 40;
 
     {
         //가벽 만들기
