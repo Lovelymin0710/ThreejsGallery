@@ -1,8 +1,8 @@
 import * as THREE from "https://unpkg.com/three@0.108.0/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.108.0/examples/jsm/controls/OrbitControls.js";
 import { FBXLoader } from "https://unpkg.com/three@0.108.0/examples/jsm/loaders/FBXLoader.js";
-import { FontLoader } from "../loaders/FontLoader.js";
-import { TextGeometry } from "../geometries/TextGeometry.js";
+import { FontLoader } from "../../loaders/FontLoader.js";
+import { TextGeometry } from "../../geometries/TextGeometry.js";
 
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
@@ -22,7 +22,7 @@ const init = () => {
     scene = new THREE.Scene();
     scene.background = new THREE.Color("#eee"); //배경 컬러
     camera = new THREE.PerspectiveCamera(75, WIDTH / HEIGHT, 0.1, 1000);
-    camera.position.set(0, 40, 0);
+    camera.position.set(0, 40, -20);
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(WIDTH, HEIGHT);
@@ -44,12 +44,12 @@ const init = () => {
     boxMesh.receiveShadow = true;
     scene.add(boxMesh);
 
-    const geometry1 = new THREE.BoxGeometry(80, 100, 1);
+    const geometry1 = new THREE.BoxGeometry(60, 70, 1);
     const loader = new THREE.TextureLoader();
 
     const material1 = new THREE.MeshBasicMaterial({map: loader.load("../../image/sw/swimage01.png"),}),
     cube = new THREE.Mesh(geometry1, material1);
-    cube.position.set(0, 40, -100);
+    cube.position.set(0, 45, -100);
     scene.add(cube);
     
     {
@@ -195,7 +195,7 @@ let moveNum = 0;
 
 button.addEventListener("click", () => {
     if (camera.position.z == -240) {
-        moveNum = 0;
+        moveNum = -20;
     } else {
         moveNum = -240;
     }
