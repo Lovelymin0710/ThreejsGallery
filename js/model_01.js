@@ -84,8 +84,10 @@ const init = () => {
     const infogeometry = new THREE.BoxGeometry(60, 40, 3);
     const infomaterial = new THREE.MeshBasicMaterial({map: loader.load("../../image/sw/swinfoimage01.png"),}),
     info = new THREE.Mesh(infogeometry, infomaterial);
-    info.position.set(-25, 42, -285);
+    info.position.set(-22, 42, -285);
+    info.castShadow = true;
     info.receiveShadow = true;
+    info.rotateY(0.11);
     scene.add(info);
 
     // fbxLoadFunc("../../image/DismissingGesture.FBX", "mixamo.com", 12, 0, -300);
@@ -99,10 +101,11 @@ const init = () => {
         });
         const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
         const font3d = new THREE.Mesh(geometry, material);
-        font3d.position.set(30,40,-300);
+        font3d.position.set(32,35,-300);
     
         font3d.castShadow = true;
         font3d.receiveShadow = true;
+        font3d.rotateY(-0.11);
         scene.add(font3d);
     });
 };
