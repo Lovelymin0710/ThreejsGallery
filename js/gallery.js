@@ -16,85 +16,69 @@ let galleryGroup2 = new THREE.Group();
 const sw_work = [
     {
         image: "../image/sw/swimage01.png",
-        link: "../html/sw/sw_Image01.html",
-        info: "저자1 신기",
+        link: "../html/sw/sw_3Dimage01.html"
     },
     {
         image: "../image/sw/swimage02.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/sw/swimage03.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/sw/swimage04.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/sw/swimage05.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/sw/swimage06.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/sw/swimage07.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
 ];
 const hw_work = [
     {
         image: "../image/hw/hwimage01.png",
-        link: "../html/hw_Image01.html",
-        info: "저자1 신기",
+        link: "../html/hw_Image01.html"
     },
     {
         image: "../image/hw/hwimage02.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/hw/hwimage03.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/hw/hwimage04.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/hw/hwimage05.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/hw/hwimage06.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/hw/hwimage07.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/hw/hwimage08.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
     {
         image: "../image/hw/hwimage09.png",
-        link: "http://google.com",
-        info: "저자1 신기",
+        link: "http://google.com"
     },
 ];
 
@@ -304,7 +288,6 @@ const addBox = (i) => {
     boxMesh.position.set(x, y, -wallWidth2 / 2 + 2);
     boxMesh.name = "workofArt_${i}";
     boxMesh.link = sw_work[i].link;
-    boxMesh.info = sw_work[i].info;
     galleryGroup.add(boxMesh);
 
     //조명 넣기
@@ -334,7 +317,6 @@ const addBox2 = (i) => {
     boxMesh2.position.set(-wallWidth / 2 + 2, y, x);
     boxMesh2.name = "workofArt_${i}";
     boxMesh2.link = hw_work[i].link;
-    boxMesh2.info = hw_work[i].info;
     galleryGroup2.add(boxMesh2);
 
     const spotLight2 = new THREE.SpotLight(0xffffff, 1);
@@ -373,7 +355,6 @@ const onPointerMove = (event) => {
     if (intersects.length > 0 || intersects2.length > 0) {
         if (intersects[1] != null) {
             document.querySelector("body").style.cursor = "pointer";
-            console.log(intersects[0].object.info);
         } else if (intersects2[1] != null) {
             document.querySelector("body").style.cursor = "pointer";
         } else {
