@@ -89,7 +89,7 @@ const init = () => {
     scene = new THREE.Scene();
     scene.background = new THREE.Color("#000000"); //배경 컬러 #6fbdff
     camera = new THREE.PerspectiveCamera(75, WIDTH / HEIGHT, 1, 1000);
-    camera.position.set(0, 0, 50);
+    camera.position.set(0, 0, 20);
 
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(WIDTH, HEIGHT);
@@ -108,7 +108,7 @@ const init = () => {
 
     scene.add(particle);
 
-    var geometry = new THREE.TetrahedronGeometry(0.6, 0);
+    var geometry = new THREE.TetrahedronGeometry(1.2, 0);
 
     var material = new THREE.MeshPhongMaterial({
         color: "#7e8f80",
@@ -120,7 +120,7 @@ const init = () => {
         mesh.position
             .set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5)
             .normalize();
-        mesh.position.multiplyScalar(90 + Math.random() * 700);
+        mesh.position.multiplyScalar(200 + Math.random() * 100);
         mesh.rotation.set(
             Math.random() * 2,
             Math.random() * 2,
