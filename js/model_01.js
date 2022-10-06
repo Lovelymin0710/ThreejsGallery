@@ -51,6 +51,7 @@ const init = () => {
     cube = new THREE.Mesh(geometry1, material1);
     cube.position.set(0, 40, -100);
     scene.add(cube);
+    
     {
         //조명 넣기
         var light = new THREE.HemisphereLight(0xffffff, 0x080820, 1);
@@ -81,9 +82,10 @@ const init = () => {
     }
 
     const infogeometry = new THREE.BoxGeometry(60, 40, 3);
-    const infomaterial = new THREE.MeshBasicMaterial({map: loader.load("../../image/swinfoimage01.png"),}),
+    const infomaterial = new THREE.MeshBasicMaterial({map: loader.load("../../image/sw/swinfoimage01.png"),}),
     info = new THREE.Mesh(infogeometry, infomaterial);
-    info.position.set(-25, 40, -285);
+    info.position.set(-25, 42, -285);
+    info.receiveShadow = true;
     scene.add(info);
 
     // fbxLoadFunc("../../image/DismissingGesture.FBX", "mixamo.com", 12, 0, -300);
@@ -156,7 +158,6 @@ const fbxLoadFunc = (modelName, animationName, ...pos) => {
         }
     );
 };
-
 const clock = new THREE.Clock();
 
 const animate = () => {
