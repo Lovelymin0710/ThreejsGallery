@@ -16,7 +16,7 @@ let galleryGroup2 = new THREE.Group();
 const sw_work = [
     {
         image: "../image/sw/swimage01.png",
-        link: "../html/sw/model_01.html"
+        link: "../html/sw/sw_3Dimage01.html"
     },
     {
         image: "../image/sw/swimage02.png",
