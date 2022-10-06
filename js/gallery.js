@@ -20,65 +20,65 @@ const sw_work = [
     },
     {
         image: "../image/sw/swimage02.png",
-        link: "http://google.com"
+        link: "../html/sw/sw_3Dimage02.html"
     },
     {
         image: "../image/sw/swimage03.png",
-        link: "http://google.com"
+        link: "../html/sw/sw_3Dimage03.html"
     },
     {
         image: "../image/sw/swimage04.png",
-        link: "http://google.com"
+        link: "../html/sw/sw_3Dimage04.html"
     },
     {
         image: "../image/sw/swimage05.png",
-        link: "http://google.com"
+        link: "../html/sw/sw_3Dimage05.html"
     },
     {
         image: "../image/sw/swimage06.png",
-        link: "http://google.com"
+        link: "../html/sw/sw_3Dimage06.html"
     },
     {
         image: "../image/sw/swimage07.png",
-        link: "http://google.com"
+        link: "../html/sw/sw_3Dimage07.html"
     },
 ];
 const hw_work = [
     {
         image: "../image/hw/hwimage01.png",
-        link: "../html/hw_Image01.html"
+        link: "../html/hw/hw_3Dimage01.html"
     },
     {
         image: "../image/hw/hwimage02.png",
-        link: "http://google.com"
+        link: "../html/hw/hw_3Dimage02.html"
     },
     {
         image: "../image/hw/hwimage03.png",
-        link: "http://google.com"
+        link: "../html/hw/hw_3Dimage03.html"
     },
     {
         image: "../image/hw/hwimage04.png",
-        link: "http://google.com"
+        link: "../html/hw/hw_3Dimage04.html"
     },
     {
         image: "../image/hw/hwimage05.png",
-        link: "http://google.com"
+        link: "../html/hw/hw_3Dimage05.html"
     },
     {
         image: "../image/hw/hwimage06.png",
-        link: "http://google.com"
+        link: "../html/hw/hw_3Dimage06.html"
     },
     {
         image: "../image/hw/hwimage07.png",
-        link: "http://google.com"
+        link: "../html/hw/hw_3Dimage07.html"
     },
     {
         image: "../image/hw/hwimage08.png",
-        link: "http://google.com"
+        link: "../html/hw/hw_3Dimage08.html"
     },
     {
         image: "../image/hw/hwimage09.png",
-        link: "http://google.com"
+        link: "../html/hw/hw_3Dimage09.html"
     },
 ];
 
