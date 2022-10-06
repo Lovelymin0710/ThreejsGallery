@@ -1,6 +1,8 @@
 import * as THREE from "https://unpkg.com/three@0.108.0/build/three.module.js";
 import { OrbitControls } from "https://unpkg.com/three@0.108.0/examples/jsm/controls/OrbitControls.js";
 import { FBXLoader } from "https://unpkg.com/three@0.108.0/examples/jsm/loaders/FBXLoader.js";
+import { FontLoader } from "../loaders/FontLoader.js";
+import { TextGeometry } from "../geometries/TextGeometry.js";
 
 let WIDTH = window.innerWidth;
 let HEIGHT = window.innerHeight;
@@ -42,21 +44,12 @@ const init = () => {
     boxMesh.receiveShadow = true;
     scene.add(boxMesh);
 
-    const geometry1 = new THREE.BoxGeometry(100, 100, 1);
+    const geometry1 = new THREE.BoxGeometry(80, 100, 1);
     const loader = new THREE.TextureLoader();
 
-    const material1 = [
-        new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
-        new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
-        new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
-        new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
-        new THREE.MeshBasicMaterial({
-            map: loader.load("../image/converter.png"),
-        }),
-        new THREE.MeshBasicMaterial({ color: 0x00ff00 }),
-    ];
-    const cube = new THREE.Mesh(geometry1, material1);
-    cube.position.set(0, 50, -100);
+    const material1 = new THREE.MeshBasicMaterial({map: loader.load("../../image/sw/swimage01.png"),}),
+    cube = new THREE.Mesh(geometry1, material1);
+    cube.position.set(0, 40, -100);
     scene.add(cube);
     {
         //조명 넣기
@@ -87,7 +80,29 @@ const init = () => {
         scene.fog = new THREE.Fog(color, near, far);
     }
 
-    fbxLoadFunc("../image/DismissingGesture.FBX", "mixamo.com", 12, 0, -300);
+    const infogeometry = new THREE.BoxGeometry(60, 40, 3);
+    const infomaterial = new THREE.MeshBasicMaterial({map: loader.load("../../image/swinfoimage01.png"),}),
+    info = new THREE.Mesh(infogeometry, infomaterial);
+    info.position.set(-25, 40, -285);
+    scene.add(info);
+
+    // fbxLoadFunc("../../image/DismissingGesture.FBX", "mixamo.com", 12, 0, -300);
+
+    const fontLoader = new FontLoader();
+    fontLoader.load("../../font/Do Hyeon_Regular.json", (font) => {
+        const geometry = new TextGeometry("오늘\n"+"뭐"+"먹지?", {
+            font: font,
+            size: 10,
+            height: 1,
+        });
+        const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
+        const font3d = new THREE.Mesh(geometry, material);
+        font3d.position.set(30,40,-300);
+    
+        font3d.castShadow = true;
+        font3d.receiveShadow = true;
+        scene.add(font3d);
+    });
 };
 
 const fbxLoadFunc = (modelName, animationName, ...pos) => {
