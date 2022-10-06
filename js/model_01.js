@@ -20,7 +20,7 @@ const init = () => {
     scene = new THREE.Scene();
     scene.background = new THREE.Color("#eee"); //배경 컬러
     camera = new THREE.PerspectiveCamera(75, WIDTH / HEIGHT, 0.1, 1000);
-    camera.position.set(0, 40, 0);
+    camera.position.set(0, 30, 0);
 
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(WIDTH, HEIGHT);
