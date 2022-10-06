@@ -19,7 +19,7 @@ const sw_work = [
         link: "../html/sw/sw_3Dimage01.html"
     },
     {
-        image: "../image/sw/swimage02.png",
+        image: "../image/sw/swimage02-2.png",
         link: "../html/sw/sw_3Dimage02.html"
     },
     {
