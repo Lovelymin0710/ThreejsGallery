@@ -47,7 +47,7 @@ const init = () => {
     const geometry1 = new THREE.BoxGeometry(60, 70, 1);
     const loader = new THREE.TextureLoader();
 
-    const material1 = new THREE.MeshBasicMaterial({map: loader.load("../../image/sw/swimage02-2.png"),}),
+    const material1 = new THREE.MeshBasicMaterial({map: loader.load("../../image/sw/swimage07.png"),}),
     cube = new THREE.Mesh(geometry1, material1);
     cube.position.set(0, 45, -100);
     scene.add(cube);
@@ -82,7 +82,7 @@ const init = () => {
     }
 
     const infogeometry = new THREE.BoxGeometry(60, 40, 3);
-    const infomaterial = new THREE.MeshBasicMaterial({map: loader.load("../../image/sw/swinfoimage02.png"), outline:true}),
+    const infomaterial = new THREE.MeshBasicMaterial({map: loader.load("../../image/sw/swinfoimage07.png"), outline:true}),
     info = new THREE.Mesh(infogeometry, infomaterial);
     info.position.set(-22, 42, -285);
     info.castShadow = true;
@@ -92,14 +92,14 @@ const init = () => {
 
     const fontLoader = new FontLoader();
     fontLoader.load("../../font/Do Hyeon_Regular.json", (font) => {
-        const geometry = new TextGeometry("스쿼터\n"+"(squater)", {
+        const geometry = new TextGeometry("MEMO\n(MEdicine\ndatafor\nMobile\nOCR)", {
             font: font,
-            size: 8,
+            size: 7.5,
             height: 1,
         });
         const material = new THREE.MeshBasicMaterial({ color: 0x000000 });
         const font3d = new THREE.Mesh(geometry, material);
-        font3d.position.set(32,35,-300);
+        font3d.position.set(32,60,-300);
     
         font3d.castShadow = true;
         font3d.receiveShadow = true;

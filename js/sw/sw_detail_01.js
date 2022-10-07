@@ -90,8 +90,6 @@ const init = () => {
     info.rotateY(0.11);
     scene.add(info);
 
-    // fbxLoadFunc("../../image/DismissingGesture.FBX", "mixamo.com", 12, 0, -300);
-
     const fontLoader = new FontLoader();
     fontLoader.load("../../font/Do Hyeon_Regular.json", (font) => {
         const geometry = new TextGeometry("오늘\n"+"뭐"+"먹지?", {
@@ -110,66 +108,8 @@ const init = () => {
     });
 };
 
-const fbxLoadFunc = (modelName, animationName, ...pos) => {
-    const fbxLoader = new FBXLoader();
-    fbxLoader.load(
-        modelName,
-        (object) => {
-            // console.log(object);
-
-            object.traverse(function (child) {
-                if (child.isMesh) {
-                    child.castShadow = true;
-                    child.receiveShadow = true;
-                }
-            });
-
-            //애니메이션
-            if (object.animations != undefined) {
-                object.mixer = new THREE.AnimationMixer(object);
-                const clips = object.animations;
-                // console.log(clips);
-
-                mixers.push(object.mixer);
-                // console.log(mixers.length);
-
-                if (mixers.length > 0) {
-                    // console.log(object.animations);
-                    const clip = THREE.AnimationClip.findByName(
-                        clips,
-                        animationName
-                    );
-                    let action = object.mixer.clipAction(clip);
-                    // var action = object.mixer.clipAction(object.animations[0]);
-                    action.play();
-                }
-            }
-
-            //크기 조절
-            let scaleNum = 0.3;
-            object.scale.set(scaleNum, scaleNum, scaleNum);
-
-            object.position.set(...pos);
-            model.add(object);
-            scene.add(model);
-        },
-        (xhr) => {
-            console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-        },
-        (error) => {
-            console.log(error);
-        }
-    );
-};
-const clock = new THREE.Clock();
-
 const animate = () => {
     //controls.update();
-    const delta = clock.getDelta();
-    // console.log(delta);
-    for (let i = 0; i < mixers.length; i++) {
-        mixers[i].update(delta);
-    }
 
     camera.updateProjectionMatrix();
     renderer.render(scene, camera);
