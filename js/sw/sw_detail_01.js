@@ -10,8 +10,7 @@ let HEIGHT = window.innerHeight;
 let scene, camera, renderer;
 let controls;
 
-let model = new THREE.Object3D();
-let mixers = [];
+let infogroup = new THREE.Group();
 
 //샘플 3d 모델링 다운로드
 //1. https://www.mixamo.com/
@@ -81,15 +80,60 @@ const init = () => {
         scene.fog = new THREE.Fog(color, near, far);
     }
 
-    const infogeometry = new THREE.BoxGeometry(60, 40, 3);
+    const infogeometry = new THREE.BoxGeometry(60, 40, 1);
     const infomaterial = new THREE.MeshBasicMaterial({map: loader.load("../../image/sw/swinfoimage01.png"),}),
     info = new THREE.Mesh(infogeometry, infomaterial);
     info.position.set(-22, 42, -285);
     info.castShadow = true;
     info.receiveShadow = true;
-    info.rotateY(0.11);
-    scene.add(info);
+    // info.rotateY(0.11);
+    // scene.add(info);
+    infogroup.add(info);
 
+    // const linematerial = new THREE.LineBasicMaterial( { color: 0x000000 } );
+    // const points = [];
+    // points.push( new THREE.Vector3( - 53.9, 63, -285 ) );
+    // points.push( new THREE.Vector3( 8.3, 63, -285 ) );
+    // points.push( new THREE.Vector3( 8.3, 21.3, -285 ) );
+    // points.push( new THREE.Vector3( -53.9, 21.3, -285 ) );
+    // points.push( new THREE.Vector3( -53.9, 63, -285 ) );
+    
+    // const linegeometry = new THREE.BufferGeometry().setFromPoints( points );
+    // const line = new THREE.Line( linegeometry, linematerial );
+    
+    // infogroup.add(line);
+    // infogroup.rotateY(0.11);
+    // infogroup.position(0)
+    // scene.add( infogroup );
+
+    const outlinegeo1 = new THREE.BoxGeometry(63,0.8,1)
+    const outlinegeo2 = new THREE.BoxGeometry(0,45.1,1)
+    const outmaterial = new THREE.MeshBasicMaterial({ color: 0x000000 });
+    const outmaterial2 = new THREE.MeshBasicMaterial({ color: 0x000000 });
+    const outline1 = new THREE.Mesh(outlinegeo1, outmaterial);
+    const outline2 = new THREE.Mesh(outlinegeo2, outmaterial2);
+    const outline3 = new THREE.Mesh(outlinegeo1, outmaterial);
+    const outline4 = new THREE.Mesh(outlinegeo2, outmaterial2);
+    outline1.position.set(-22,63,-285);
+    outline2.position.set(-53.6,40.85,-285);
+    outline3.position.set(-22,21,-285);
+    outline4.position.set(9.1,40.85,-285);
+    // outline2.rotateY(0.05);
+
+    infogroup.add(outline1);
+    infogroup.add(outline2);
+    infogroup.add(outline3);
+    infogroup.add(outline4);
+    // scene.add(outline1);
+    // scene.add(outline2);
+    // scene.add(outline3);
+    // scene.add(outline4);
+    scene.add(infogroup);
+    infogroup.rotateY(0.11);
+    console.log(infogroup.position.x)
+    console.log(infogroup.position.y)
+    console.log(infogroup.position.z)
+    infogroup.position.set(35,0,0)
     const fontLoader = new FontLoader();
     fontLoader.load("../../font/Do Hyeon_Regular.json", (font) => {
         const geometry = new TextGeometry("오늘\n"+"뭐"+"먹지?", {
