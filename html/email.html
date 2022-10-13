@@ -1,110 +1,113 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Contact</title>
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../css/email.css" rel="stylesheet" />
-        <style>
-            input {  width:100%; height:100%; margin:10px; border-radius:3px;}
-            textarea {  width:100%; height:100%; margin:10px; border-radius:3px;}
-            .btn {
-                background-color: gray;
-                padding: 12px 28px;
-                width: 100px;
-                border-radius:3px;
-            }
-            .form-elements {
-                text-align:center;
-                border-radius:3px;
-                margin:10px
-            }
-            .progress {
-                position: fixed;
-                width: 100vw;
-                height: 1px;
-                top: 0;
-                background-color: #666666;
-                z-index: 10;
-            }
-            .bar {
-                position: absolute;
-                width: 0;
-                height: 1px;
-                top: 0;
-                background: white;
-                transition: width 0.1s ease-out;
-            }
-            .header {
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 2;
-                width: 100%;
-                height: 10px;
-                background-color: #000000;
-            }
-            .header_menu{
-                position: fixed;
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="contact form example">
+    <title>Contact</title>
+</head>
 
-                font-size: 13px;
-                font-family: cursive;           
-                color: #111111;
-                box-sizing: border-box;
-                z-index: 2;
-                right: 120px;
-                top: 20px;
-                
-            }
-            .menu_items{    
-            display: flex;
-            align-items: center;
-            margin: 0;
-            margin-top: 20px;
-            flex-wrap: nowrap;
-            align-content: center;
-            flex-direction: row;
+<body>
+
+<!-- START HERE -->
+   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   <!-- Style The Contact Form How Ever You Prefer -->
+   <link href="../css/email.css" rel="stylesheet" />
+
+   <style>
+        input {  width:100%; height:100%; margin:10px; border-radius:3px;}
+        textarea {  width:100%; height:100%; margin:10px; border-radius:3px;}
+        .btn {
+            background-color: gray;
+            padding: 12px 28px;
+            width: 100px;
+            border-radius:3px;
+        }
+        .form-elements {
+            text-align:center;
+            border-radius:3px;
+            margin:10px
+        }
+        .progress {
+            position: fixed;
+            width: 100vw;
+            height: 1px;
+            top: 0;
+            background-color: #666666;
+            z-index: 10;
+        }
+        .bar {
+            position: absolute;
+            width: 0;
+            height: 1px;
+            top: 0;
+            background: white;
+            transition: width 0.1s ease-out;
+        }
+        .header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            height: 10px;
+            background-color: #000000;
+        }
+        .header_menu{
+            position: fixed;
+
             font-size: 13px;
             font-family: cursive;           
-            color: #ffffff;
+            color: #111111;
             box-sizing: border-box;
-            }
-            ul {
-            list-style-type: none;
-            padding: 0;
+            z-index: 2;
+            right: 120px;
+            top: 20px;
             
-            }
-            .menu__audio {
-                    width: 20px;
-                    height: 12px;
-                    position: relative;
-                    padding: 0;
-                    border: none;
-                    
-                    background: none;
-            }
-            .menu__item+.menu__item {
-                    margin-left: 25px;
-                    margin-right: 25px;
-
-            }
-            .menu__link {
-                    position: relative;
-                    overflow: visible;
-                    text-decoration : none;
-                    color: inherit;
-            }
-
-        </style>
+        }
+        .menu_items{    
+        display: flex;
+        align-items: center;
+        margin: 0;
+        margin-top: 20px;
+        flex-wrap: nowrap;
+        align-content: center;
+        flex-direction: row;
+        font-size: 13px;
+        font-family: cursive;           
+        color: #ffffff;
+        box-sizing: border-box;
+        }
+        ul {
+        list-style-type: none;
+        padding: 0;
         
-    </head>
+        }
+        .menu__audio {
+                width: 20px;
+                height: 12px;
+                position: relative;
+                padding: 0;
+                border: none;
+                
+                background: none;
+        }
+        .menu__item+.menu__item {
+                margin-left: 25px;
+                margin-right: 25px;
 
-    <body>
-        <!-- Responsive navbar-->
-        <div class="progress">
+        }
+        .menu__link {
+                position: relative;
+                overflow: visible;
+                text-decoration : none;
+                color: inherit;
+        }
+  </style>
+
+          <!-- Responsive navbar-->
+          <div class="progress">
             <span class="bar"></span>
         </div>
         <div id="canvasWrap">
@@ -138,35 +141,35 @@
                 <p class="text-white-50 mb-0">등록 문의 상담</p>
             </div>
         </header>
-        <!-- Content section-->
 
-        <form class="gform pure-form pure-form-stacked" method="POST" data-email="example@email.net" target="iframe1"
-        action="https://script.google.com/macros/s/AKfycbzYCMn00uSfdeBMec1593IdcVJAz6o-JXICUYXkQOURBy_IKepvuf0d5B2KdDiAD2DcsQ/exec">
-          <!-- change the form action to your script url -->
+  <form class="gform pure-form pure-form-stacked" method="POST" data-email="example@email.net" target="iframe1"
+  action="https://script.google.com/macros/s/AKfycbzYCMn00uSfdeBMec1593IdcVJAz6o-JXICUYXkQOURBy_IKepvuf0d5B2KdDiAD2DcsQ/exec">
+    <!-- change the form action to your script url -->
+
+    <div class="form-elements">
+      <fieldset class="pure-group">
+        <input id="name" name="name" placeholder="이름" />
+      </fieldset>
       
-        <div class="form-elements">
-            <fieldset class="pure-group">
-            <input id="name" name="name" placeholder="이름" style="width:40%; height:40%;" />
-            </fieldset>
+      <fieldset class="pure-group">
+        <input id="email" name="email" type="email" value=""
+        required placeholder="이메일"/>
+      </fieldset>
 
-            <fieldset class="pure-group">
-                <input id="email" name="email" type="email" value="" style="width:40%; height:40%;" required placeholder="이메일"/>
-            </fieldset>
+      <fieldset class="pure-group">
+        <textarea id="message" name="message" rows="10"
+        placeholder="문의내용"></textarea>
+      </fieldset>
 
-            <fieldset class="pure-group">
-            <textarea id="message" name="message" rows="10" placeholder="문의내용" style="width:40%; height:40%;"></textarea>
-            </fieldset>
-            <button class="btn" onclick="alert('제출이 완료 되었습니다.'); location.href = 'email.html'">Send</button>
+      <button class="button-success pure-button button-xlarg" onclick="alert('제출이 완료 되었습니다.'); location.href = 'email.html'">
+        <i class="fa fa-paper-plane"></i>&nbsp;Send</button>
+    </div>
+  </form>
 
-        </div>
-        </form>
-        
-        <!-- Submit the Form to Google Using "AJAX" -->
-        <script data-cfasync="false" src="form-submission-handler.js"></script>
-        <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+  <!-- Submit the Form to Google Using "AJAX" -->
+  <script data-cfasync="false" src="form-submission-handler.js"></script>
+  <iframe id="iframe1" name="iframe1" style="display:none"></iframe>
+
+
+</body>
 </html>
